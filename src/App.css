@@ -1,0 +1,45 @@
+.App {
+  text-align: center;
+}
+
+.logoutBtnHolder {
+    position: relative;
+    border: 1px solid #F4F4F4;
+    background-color: #fff;
+    height: 60px;
+}
+
+.logoutBtn {
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 20px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    margin: 10px 30px 0 0;
+    float: right;
+}
+
+.centeredBox.small {
+  width: 360px;
+  height: auto;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -180px;
+  padding: 30px;
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid #337AB7;
+  font-size: 18px;
+}
+
+.profile .avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 30px;
+}
