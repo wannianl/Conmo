@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import Home from './Home';
 import Login from './Login';
 import Subscribe from './Subscribe';
+import Profile from './Profile/index.js';
 import Parse from 'parse';
 import User from './helpers/User';
 import ParseHelper from './helpers/ParseHelper';
@@ -11,7 +14,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentScreen: 'home',
+      currentScreen: null,
       auth: false,
       loginError: null,
       editUser: null,
@@ -22,7 +25,10 @@ class App extends Component {
     this.handleBtnInput = this.handleBtnInput.bind(this);
     this.handleInfoChange = this.handleInfoChange.bind(this);
     this.handlePictureInput = this.handlePictureInput.bind(this);
-    this.handleSubscribe = this.handleSubscribe.bind(this);
+    this.handleSubscribeAccess = this.handleSubscribeAccess.bind(this);
+    this.handleUserSave = this.handleUserSave.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleSettingsAccess = this.handleSettingsAccess.bind(this);
   }
 
   componentWillMount() {
@@ -34,7 +40,7 @@ class App extends Component {
       ParseHelper.checkAuth(User.current()).then((auth) => {
         if (auth) {
           this.setState({
-            currentScreen: 'home',
+            currentScreen: 'profile',
             auth: true,
             loginError: null,
             currentUser: User.current()
@@ -56,27 +62,12 @@ class App extends Component {
     }
   }
 
-  showPage(page) {
-
-    if (page === 'login') {
-      this.setState({
-        currentScreen: page
-      });
-    } else if (page === 'subscribe') {
-      this.setState({
-        currentScreen: page,
-        editUser: ParseHelper.emptyUserData()
-      });
-    }
-    
-  }
-
   handleLogin(email,password) {
     User.logIn(email, password).then((user) => {
       ParseHelper.checkAuth(user).then((auth) => {
         if (auth) {
           this.setState({
-            currentScreen: 'home',
+            currentScreen: 'profile',
             auth: true,
             loginError: null,
             currentUser: user
@@ -139,7 +130,21 @@ class App extends Component {
     reader.readAsDataURL(file);
   }
 
-  handleSubscribe() {
+  handleSettingsAccess() {
+    var editUser = ParseHelper.userDataFromObject(this.state.currentUser);
+    this.setState({
+      editUser: editUser
+    });
+  }
+
+  handleSubscribeAccess() {
+    var editUser = ParseHelper.emptyUserData();
+    this.setState({
+      editUser: editUser
+    });
+  }
+
+  handleUserSave() {
     const editUser = this.state.editUser;
 
     let parseFile;
@@ -152,89 +157,50 @@ class App extends Component {
       }
     }
 
-    let parseUser = new User();
+    let parseUser;
+    if (editUser.id) {
+      parseUser = User.createWithoutData(editUser.id);
+    } else {
+      parseUser = new User();
+    }
     ParseHelper.updateParseUser(parseUser,editUser,parseFile);
     parseUser.save().then((user) => {
       console.log(JSON.stringify(user));
       this.setState({
-        currentScreen: 'login',
         editUser: null
       })
     }, (error) => {
       console.log(error);
     });
+  }
 
+  handlePageChange(page) {
+    this.setState({
+      currentScreen: page
+    });
   }
 
   render() {
-
-    var currentUser = this.state.currentUser ? this.state.currentUser : null;
-    let avatar;
-    let name;
-    let email;
-    let userType;
-    let country;
-    let city;
-    let rate;
-    let statement;
-    let userInfo;
-
-    if (currentUser) {
-      avatar = currentUser.get('avatar').url();
-      name = currentUser.get('name');
-      email = currentUser.get('email');
-      userType = currentUser.get('userType') === 1 ? "Student" : "Teacher";
-      country = currentUser.get('country');
-      city = currentUser.get('city');
-      rate = currentUser.get('rate');
-      statement = currentUser.get('personalStatement');
-
-      if (currentUser.get('userType') === 1) {
-        userInfo = [
-        <img src={avatar} alt="" key="avatar" className="avatar" />,
-        <div key="name">Name: {name}</div>,
-        <div key="email">E-mail: {email}</div>,
-        <div key="userType">User Type: {userType}</div>,
-        <div key="country">Country: {country}</div>,
-        <div key="city">City: {city}</div>
-        ]
-      } else {
-        userInfo = [
-        <img src={avatar} alt="" key="avatar" />,
-        <div key="name">Name: {name}</div>,
-        <div key="email">E-mail: {email}</div>,
-        <div key="userType">User Type: {userType}</div>,
-        <div key="rate">Rate: ${rate}</div>,
-        <div key="statement">Statement: {statement}</div>
-        ]
-      }
-    }
-
-
     return (
       <div className="App">
-        {this.state.currentScreen === "home" && this.state.auth &&
-          <div className="profile">
-            <div className="logoutBtnHolder">
-              <div className="btn btn-danger logoutBtn" onClick={() => this.handleLogout()}>Logout</div>
-            </div>
-            {userInfo}
-          </div>
-        }
-        {this.state.currentScreen === "home" && !this.state.auth &&
-          <div className="centeredBox small">
-            <div className="mb-3">You must Log in or subscribe</div>
-            <button className="btn btn-default" onClick={() => this.showPage("login")}>Log In</button>
-            <button className="btn btn-primary ml-2" onClick={() => this.showPage("subscribe")}>Subscribe</button>
-          </div>
-        }
-        { this.state.currentScreen === "login" && !this.state.auth &&
-          <Login handleLogin={this.handleLogin} loginError={this.state.loginError} />
-        }
-        { this.state.currentScreen === "subscribe" && !this.state.auth &&
-          <Subscribe editUser={this.state.editUser} handleBtnInput={this.handleBtnInput} handleInfoChange={this.handleInfoChange}
-          handlePictureInput={this.handlePictureInput} handleSubscribe={this.handleSubscribe} />
-        }
+        <Switch>
+          <Route exact path="/" render={() => (
+            <Home currentScreen={this.state.currentScreen} handlePageChange={this.handlePageChange} />
+            )} />
+          <Route path="/login" render={() => (
+            <Login handleLogin={this.handleLogin} loginError={this.state.loginError} currentScreen={this.state.currentScreen} handlePageChange={this.handlePageChange}/>
+          )} />
+          <Route path="/subscribe" render={() => (
+            <Subscribe editUser={this.state.editUser} handleBtnInput={this.handleBtnInput} handleInfoChange={this.handleInfoChange}
+            handlePictureInput={this.handlePictureInput} handleSubscribeAccess={this.handleSubscribeAccess} handleUserSave={this.handleUserSave}
+            currentScreen={this.state.currentScreen} handlePageChange={this.handlePageChange} />
+          )} />
+          <Route path="/profile" render={() => (
+            <Profile handleLogout={this.handleLogout} currentScreen={this.state.currentScreen} handlePageChange={this.handlePageChange} 
+            currentUser={this.state.currentUser} editUser={this.state.editUser} handleSettingsAccess={this.handleSettingsAccess}
+            handleInfoChange={this.handleInfoChange} handleUserSave={this.handleUserSave} />
+          )} />
+        </Switch>
       </div>
     );
   }

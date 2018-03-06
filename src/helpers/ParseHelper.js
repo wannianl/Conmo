@@ -17,6 +17,7 @@ export default class ParseHelper {
 
     static emptyUserData() {
         var obj = {
+            id: null,
             email: null,
             password: null,
             avatar: null,
@@ -29,6 +30,24 @@ export default class ParseHelper {
         }
 
         return obj;
+    }
+
+    static userDataFromObject(object) {
+        var obj = {
+            id: object.id,
+            email: object.get('email'),
+            password: object.get('password'),
+            avatar: object.get("avatar") ? object.get("avatar").url() : null,
+            name: object.get('name'),
+            country: object.get('country'),
+            city: object.get('city'),
+            userType: object.get('userType'),
+            rate: object.get('rate'),
+            statement: object.get('personalStatement')
+        }
+
+        return obj;
+
     }
 
     static updateParseUser(parseUser, editUser, parseFile) {
@@ -48,6 +67,12 @@ export default class ParseHelper {
             parseUser.set('personalStatement',editUser.statement);
         }
 
+    }
+
+    static fetchTeacherList() {
+        var query = new Parse.Query(User);
+        query.equalTo('userType',2);
+        return query.find();
     }
 
 }

@@ -1,0 +1,19 @@
+
+.Profile .avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 30px;
+}
+
+.Profile .contentContainer {
+  background: #F1F3FA;
+  width: 100%;
+  min-height: calc(100vh - 60px);
+  padding: 20px;
+}
+
+.Profile .contentRow {
+  margin: 20px 0;
+}

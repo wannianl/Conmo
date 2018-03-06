@@ -1,0 +1,184 @@
+.PublicProfile {
+    position: relative;
+}
+
+.PublicProfile .profile-panel .profile-info {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.PublicProfile .panel-footer {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    color: #fff;
+    text-align: left;
+}
+
+.PublicProfile .panel-footer {
+    padding: 10px 15px;
+    background-color: #f3f5f6;
+    border-top: 1px solid #ddd;
+}
+
+.PublicProfile .panel-default .panel-footer {
+    color: #768399;
+    background-color: #e4e9eb;
+    border: 1px solid #e4e9eb;
+    border-top: none;
+}
+
+.PublicProfile .panel.plain .panel-footer {
+    border-top: none;
+}
+
+.PublicProfile .panel-footer .white-content {
+    color: #768399;
+    background: #fff;
+    background-color: #fff;
+}
+
+.PublicProfile .statsHolder {
+    width: 100%;
+    display: block;
+}
+
+.PublicProfile .statsGroup {
+    display: inline-block;
+    width: auto;
+}
+
+.PublicProfile .statsGroup * {
+    display: block;
+}
+
+
+.PublicProfile .profile-stats-info {
+    font-size: 24px;
+    margin-right: 10px;
+    margin-top: 10px;
+    color: #79859b;
+}
+
+.PublicProfile .profile-panel .user-name {
+    margin-top: 10px;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.PublicProfile .profile-panel .profile-avatar img {
+    border-radius: 50%;
+    border: 1px solid #e7e7e2;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.PublicProfile .profile-panel .profile-avatar {
+    border-radius: 50%;
+    padding: 10px;
+    border: 1px solid #e7e7e2;
+    margin: 10px auto;
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+.PublicProfile .panel-default .panel-body {
+    border: 1px solid #e4e9eb;
+    border-top: none;
+    height: auto;
+}
+
+.PublicProfile .panel-body {
+    padding: 15px;
+}
+
+.PublicProfile .panel-body .avatarCol, .PublicProfile .panel-body .infoCol {
+    display: inline-block;
+    vertical-align: top;
+    height: 220px;
+}
+
+.PublicProfile .panel-body .infoCol {
+    text-align: left;
+}
+
+.PublicProfile .profile-panel .profile-image {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 300px !important;
+}
+
+.PublicProfile .panel {
+    position: relative;
+    margin-bottom: 25px;
+    border-radius: 4px;
+    border: 0;
+    box-shadow: none;
+} 
+
+.PublicProfile .panel-default {
+    border-color: #e4e9eb;
+}
+
+.PublicProfile .panel.plain .panel-default .panel-heading {
+    border: 1px solid #e4e9eb;
+    border-bottom: none;
+}
+
+.PublicProfile .panel.plain .panel-heading {
+    border-bottom: none;
+}
+
+.PublicProfile .panel.panel-default .panel-heading {
+    color: #768399;
+}
+
+.PublicProfile .panel-heading .white-content {
+    color: #768399;
+    background: #fff;
+    background-color: #fff;
+}
+.PublicProfile .panel-default .panel-heading {
+    color: #768399;
+    background-color: #e4e9eb;
+    border-color: #e4e9eb;
+}
+.PublicProfile .white-content {
+    color: #768399;
+    background: #fff;
+    background-color: #fff;
+}
+.PublicProfile .p-left {
+    padding-left: 0!important;
+}
+
+.PublicProfile .p-right {
+    padding-right: 0!important;
+}
+
+.PublicProfile .panel-heading {
+    padding: 0 15px;
+    min-height: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+        
+.PublicProfile .profile-userbuttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.PublicProfile .profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+
+.PublicProfile .profile-userbuttons .btn:last-child {
+  margin-right: 0px;
+}

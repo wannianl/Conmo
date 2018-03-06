@@ -5,31 +5,22 @@
 }
 
 .subscribeCont {	
-  width: 600px;
-  height: 700px;
+  width: 800px;
+  height: auto;
   margin: 0 auto;
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -350px;
-  margin-left: -300px;
+  margin-top: -300px;
+  margin-left: -400px;
   padding: 15px 35px 45px;
-  border: 1px solid rgba(0,0,0,0.1);  
+  border: 1px solid rgba(0,0,0,0.1); 
   border-radius: 5px;
   overflow: auto;
 }
 
 .Subscribe h2 {
   font-family: 'Nunito', sans-serif !important;
-}
-
-.Subscribe .subscribeBtn {
-  margin: 30px auto 0;
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  max-width: 200px;
-  
 }
 
 .Subscribe .errorMsg {

@@ -1,0 +1,33 @@
+
+.RightCol .profile-content {
+  padding: 20px;
+  background: #fff;
+  min-height: calc(100vh - 140px);
+}
+
+
+.RightCol .profile-content .profileItem {
+  margin: 10px 0;
+  padding: 0 30px;
+  width: 100%;
+  text-align: left;
+}
+
+
+.RightCol .profile-content .profileItem .label {
+  display: inline-block;
+  
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  margin-bottom: 5px;
+  padding: 0;
+}
+
+.RightCol .profile-content .profileItem .value {
+  display: inline-block;
+  height: 40px;
+  padding: 0;
+  padding-left: 10px;
+}

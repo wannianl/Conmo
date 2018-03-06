@@ -1,19 +1,40 @@
 import React, { Component } from 'react';
 import './Subscribe.css';
+import Topbar from './general/Topbar';
 import avatarPlaceholder from './assets/avatarPlaceholder.png'
+import { Redirect } from 'react-router-dom';
 
 export default class Subscribe extends Component {
+
+  componentDidMount() {
+      this.props.handleSubscribeAccess();
+  }
 
   handlePictureInput(file) {
     this.props.handlePictureInput(file);
   }
 
+  handleSubscription() {
+      this.props.handleUserSave();
+      this.props.handlePageChange('login');
+  }
+
   render() {
+
+    if (this.props.currentScreen === 'login') {
+        return <Redirect push to="/login" />;
+    } else if (this.props.currentScreen === 'home') {
+        return <Redirect push to="/" />;
+    } else if (this.props.currentScreen === 'profile') {
+        return <Redirect push to="/profile" />;
+    }
 
     var editUser = this.props.editUser;
 
     return (
       <div className="Subscribe">
+        <Topbar handlePageChange={this.props.handlePageChange} />
+        {editUser ?
         <div className="subscribeCont">
             <input type="button" className={editUser.userType === 1 ? "btnInput btnLeft btnActive" : "btnInput btnLeft" } value="Student" onClick={() => this.props.handleBtnInput('userType',1)} />
             <input type="button" className={editUser.userType === 2 ? "btnInput btnRight btnActive" : "btnInput btnRight" } value="Teacher" onClick={() => this.props.handleBtnInput('userType',2)} />
@@ -59,8 +80,11 @@ export default class Subscribe extends Component {
                 </div>
               </div>
             }
-            <button className="btn btn-lg btn-primary btn-block subscribeBtn" onClick={() => this.props.handleSubscribe()}>Subscribe</button>  
+            <button className="btn btn-lg btn-primary float-left actionBtn" onClick={() => this.handleSubscription()}>Subscribe</button>  
         </div>
+        :
+        <div>Loading...</div>
+        }
       </div>
     );
   }
