@@ -15,7 +15,7 @@ export default class UserNav extends Component {
                     <img src={picture} alt="" />
                     <div className="name">{name}</div>
                 </div>
-                <div className="notificationBtn">
+                <div className="notificationBtn" onClick={() => this.props.showNotificationBox()}>
                     <i className="fas fa-bell"></i>
                 </div>
                 <div className="btn btn-danger logoutBtn" onClick={() => this.props.handleLogout()}>Logout</div>

@@ -7,6 +7,7 @@ import Subscribe from './Subscribe';
 import Profile from './Profile/index.js';
 import Parse from 'parse';
 import User from './helpers/User';
+import Notification from './helpers/Notification';
 import ParseHelper from './helpers/ParseHelper';
 
 class App extends Component {
@@ -18,7 +19,8 @@ class App extends Component {
       auth: false,
       loginError: null,
       editUser: null,
-      currentUser: null
+      currentUser: null,
+      notificationsArray: null
     }
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
@@ -29,6 +31,8 @@ class App extends Component {
     this.handleUserSave = this.handleUserSave.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleSettingsAccess = this.handleSettingsAccess.bind(this);
+    this.handleNotificationChange = this.handleNotificationChange.bind(this);
+    this.updateNotifications = this.updateNotifications.bind(this);
   }
 
   componentWillMount() {
@@ -37,13 +41,17 @@ class App extends Component {
 
   componentDidMount() {
     if (User.current()) {
-      ParseHelper.checkAuth(User.current()).then((auth) => {
-        if (auth) {
+      var authPromise = ParseHelper.checkAuth(User.current());
+      var notifPromise = ParseHelper.fetchUserNotifications(User.current().id,User.current().get("userType"));
+
+      return Promise.all([authPromise,notifPromise]).then(values => {
+        if (values[0]) {
           this.setState({
             currentScreen: 'profile',
             auth: true,
             loginError: null,
-            currentUser: User.current()
+            currentUser: User.current(),
+            notificationsArray: values[1]
           });
         } else {
           this.setState({
@@ -53,6 +61,7 @@ class App extends Component {
           });
         }
       });
+
     } else {
       this.setState({
         currentScreen: 'home',
@@ -64,13 +73,17 @@ class App extends Component {
 
   handleLogin(email,password) {
     User.logIn(email, password).then((user) => {
-      ParseHelper.checkAuth(user).then((auth) => {
-        if (auth) {
+      var authPromise = ParseHelper.checkAuth(User.current());
+      var notifPromise = ParseHelper.fetchUserNotifications(User.current().id,User.current().get("userType"));
+
+      return Promise.all([authPromise,notifPromise]).then(values => {
+        if (values[0]) {
           this.setState({
             currentScreen: 'profile',
             auth: true,
             loginError: null,
-            currentUser: user
+            currentUser: user,
+            notificationsArray: values[1]
           });
         } else {
           this.setState({
@@ -80,6 +93,7 @@ class App extends Component {
           });
         }
       });
+
     },(err)=> {
       this.setState({
         currentScreen: 'login',
@@ -144,6 +158,22 @@ class App extends Component {
     });
   }
 
+  handleNotificationChange(notificationID, action) {
+    var parseNotif = Notification.createWithoutData(notificationID);
+    parseNotif.set("type",action);
+    parseNotif.save().then((notification) => {
+      this.updateNotifications();
+    });
+  }
+
+  updateNotifications() {
+    ParseHelper.fetchUserNotifications(User.current().id,User.current().get("userType")).then((allNotifs) => {
+      this.setState({
+        notificationsArray: allNotifs
+      });
+    });
+  }
+
   handleUserSave() {
     const editUser = this.state.editUser;
 
@@ -198,7 +228,8 @@ class App extends Component {
           <Route path="/profile" render={() => (
             <Profile handleLogout={this.handleLogout} currentScreen={this.state.currentScreen} handlePageChange={this.handlePageChange} 
             currentUser={this.state.currentUser} editUser={this.state.editUser} handleSettingsAccess={this.handleSettingsAccess}
-            handleInfoChange={this.handleInfoChange} handleUserSave={this.handleUserSave} />
+            handleInfoChange={this.handleInfoChange} handleUserSave={this.handleUserSave} notificationsArray={this.state.notificationsArray}
+            handleNotificationChange={this.handleNotificationChange} updateNotifications={this.updateNotifications}/>
           )} />
         </Switch>
       </div>
@@ -210,6 +241,7 @@ class App extends Component {
     Parse.serverURL = 'https://parseapi.back4app.com/';
   
     Parse.Object.registerSubclass('User', User);
+    Parse.Object.registerSubclass('Notification', Notification);
   }
 
 }

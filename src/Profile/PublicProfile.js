@@ -2,8 +2,60 @@ import React, { Component } from 'react';
 import './PublicProfile.css';
 import avatarPlaceholder from '../assets/avatarPlaceholder.png';
 import coverPlaceholder from '../assets/coverPlaceholder.jpg';
+import ParseHelper from '../helpers/ParseHelper';
 
 export default class PublicProfile extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            friendship: null
+        }
+    }
+
+    componentDidMount() {
+        ParseHelper.fetchUserNotifications(this.props.currentUser.id,this.props.currentUser.get("userType")).then((allNotifs) => {
+            let alreadyFriends = allNotifs.filter((notif) => {
+                if (notif.get("teacher").id === this.props.user.id) {
+                    return true;
+                }
+                return false;
+            });
+            if (alreadyFriends.length > 0) {
+                this.setState({
+                    friendship: alreadyFriends[0].get("type")
+                });
+            } else {
+                this.setState({
+                    friendship: null
+                });
+            }
+        });
+    }
+
+    handleRequest() {
+        var notifPromise = ParseHelper.sendRequestNotification(this.props.user,this.props.currentUser);
+        var friendshipPromise = ParseHelper.fetchUserNotifications(this.props.currentUser.id,this.props.currentUser.get("userType"));
+        Promise.all([friendshipPromise,notifPromise]).then((values) => {
+            let alreadyFriends = values[0].filter((notif) => {
+                if (notif.get("teacher").id === this.props.user.id) {
+                    return true;
+                }
+                return false;
+            });
+            if (alreadyFriends.length > 0) {
+                this.setState({
+                    friendship: alreadyFriends[0].get("type")
+                });
+            } else {
+                this.setState({
+                    friendship: null
+                });
+            }
+        }).then(() => {
+            this.props.updateNotifications();
+        });
+    }
 
     render() {
 
@@ -11,7 +63,7 @@ export default class PublicProfile extends Component {
         let avatar = user.has("avatar") ? user.get("avatar").url() : avatarPlaceholder;
         let cover = user.has("wallpaper") ? user.get("wallpaper").url() : coverPlaceholder;
         let name = user.get("name");
-        let type = user.get("userType") === 1 ? "Student" : "Teacher";
+        //let type = user.get("userType") === 1 ? "Student" : "Teacher";
         let statement = user.get("personalStatement");
         let rate = user.get("rate");
 
@@ -29,7 +81,7 @@ export default class PublicProfile extends Component {
                             <div className="panel-body">
                                 <div className="col-xs-4 col-md-4 avatarCol">
                                     <div className="profile-avatar">
-                                        <img className="img-responsive" src={avatar} alt="profile picture"/>
+                                        <img className="img-responsive" src={avatar} alt=""/>
                                     </div>
                                 </div>
                                 <div className="col-xs-8 col-md-8 infoCol">
@@ -54,7 +106,12 @@ export default class PublicProfile extends Component {
                                         </div>
                                     </div>
                                     <div className="profile-userbuttons float-left">
-                                        <button className="btn btn-success btn-sm">Request</button>
+                                        {!this.state.friendship &&
+                                            <button className="btn btn-success btn-sm" onClick={() => this.handleRequest()}>Request</button>
+                                        }
+                                        {this.state.friendship &&
+                                            <button className="btn btn-default btn-sm unclickable">{this.state.friendship}ed</button>
+                                        }
                                         <button className="btn btn-primary btn-sm">Message</button>
                                     </div>
                                 </div>

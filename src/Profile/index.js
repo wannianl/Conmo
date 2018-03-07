@@ -4,16 +4,20 @@ import { Redirect } from 'react-router-dom';
 import UserNav from '../general/UserNav';
 import LeftCol from './LeftCol';
 import RightCol from './RightCol';
+import NotificationBox from '../general/NotificationBox';
 
 export default class Profile extends Component {
     
     constructor(props) {
         super(props);
         this.state = {
-            currentPanel: 'feed'
+            currentPanel: 'feed',
+            showNotificationBox: false,
         }
         this.handleUserMenu = this.handleUserMenu.bind(this);
+        this.showNotificationBox = this.showNotificationBox.bind(this);
     }
+
 
     handleUserMenu(target) {
         if (target === 'settings') {
@@ -22,6 +26,12 @@ export default class Profile extends Component {
 
         this.setState({
             currentPanel: target
+        });
+    }
+
+    showNotificationBox() {
+        this.setState({
+            showNotificationBox: !this.state.showNotificationBox
         });
     }
 
@@ -35,17 +45,22 @@ export default class Profile extends Component {
             return <Redirect push to="/" />;
         }
 
-
         return (
             <div className="Profile">
-                <UserNav handleLogout={this.props.handleLogout} handlePageChange={this.props.handlePageChange} currentUser={this.props.currentUser} />
+                <UserNav handleLogout={this.props.handleLogout} handlePageChange={this.props.handlePageChange} currentUser={this.props.currentUser}
+                showNotificationBox={this.showNotificationBox} />
                 <div className="contentContainer">
                     <div className="row contentRow">
                         <LeftCol currentUser={this.props.currentUser} currentPanel={this.state.currentPanel} handleUserMenu={this.handleUserMenu} />
                         <RightCol currentUser={this.props.currentUser} currentPanel={this.state.currentPanel} editUser={this.props.editUser}
-                        handleInfoChange={this.props.handleInfoChange} handleUserSave={this.props.handleUserSave} handleUserMenu={this.handleUserMenu} />
+                        handleInfoChange={this.props.handleInfoChange} handleUserSave={this.props.handleUserSave} handleUserMenu={this.handleUserMenu}
+                        notificationsArray={this.props.notificationsArray} handleNotificationChange={this.props.handleNotificationChange}
+                        updateNotifications={this.props.updateNotifications} />
                     </div>
                 </div>
+                {this.state.showNotificationBox && 
+                    <NotificationBox currentUser={this.props.currentUser} notificationsArray={this.props.notificationsArray} handleUserMenu={this.handleUserMenu} showNotificationBox={this.showNotificationBox} />
+                }
             </div>
         );
     

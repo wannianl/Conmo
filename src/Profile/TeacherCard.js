@@ -15,7 +15,7 @@ export default class TeacherCard extends Component {
         return (
             <div className="TeacherCard col-sm-6 col-md-4 col-lg-3 mt-4" onClick={() => this.props.showUserProfile(teacher)}>
                 <div className="card">
-                    <img className="card-img-top" src={picture} />
+                    <img className="card-img-top" src={picture} alt="" />
                     <div className="card-block">
                         <h4 className="card-title">{name}</h4>
                         <div className="meta">

@@ -1,5 +1,6 @@
 import Parse from 'parse';
 import User from './User';
+import Notification from './Notification';
 
 export default class ParseHelper {
 
@@ -74,5 +75,35 @@ export default class ParseHelper {
         query.equalTo('userType',2);
         return query.find();
     }
+
+    static fetchClassList() {
+        
+    }
+
+    static fetchUserNotifications(userID,userType) {
+        var userPointer = User.createWithoutData(userID);
+        var query = new Parse.Query(Notification);
+        if (userType === 1) {
+            query.equalTo("student",userPointer);
+            query.include("teacher");
+        } else if (userType === 2) {
+            query.equalTo("teacher",userPointer);
+            query.include("student");
+        }
+        
+        return query.find();
+    }
+
+    static sendRequestNotification(teacher,student) {
+        var parseNotif = new Notification();
+        var teacherPointer = User.createWithoutData(teacher.id);
+        var studentPointer = User.createWithoutData(student.id);
+        parseNotif.set('teacher',teacherPointer);
+        parseNotif.set('type',"request");
+        parseNotif.set('date',new Date());
+        parseNotif.set('student',studentPointer);
+        parseNotif.save();
+    }
+    
 
 }

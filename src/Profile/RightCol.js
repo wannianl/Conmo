@@ -3,6 +3,7 @@ import './RightCol.css';
 import Feed from './Feed';
 import EditUser from './EditUser';
 import PublicProfile from './PublicProfile';
+import ClassList from './ClassList';
 
 export default class RightCol extends Component {
     
@@ -16,7 +17,6 @@ export default class RightCol extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.currentPanel !== 'feed') {
-            console.log("chamou");
             this.setState({
                 showingUser: null
             });
@@ -37,12 +37,20 @@ export default class RightCol extends Component {
         let rate = currentUser.get("rate");
         let statement = currentUser.get("personalStatement");
         let userType = currentUser.get('userType');
+        let hasClasses;
+        if (this.props.notificationsArray.length > 0) {
+            hasClasses = true;
+        } else {
+            hasClasses = false;
+        }
+
 
         return (
             <div className="RightCol col-md-9">
                 <div className="profile-content">
                     {this.state.showingUser &&
-                        <PublicProfile showUserProfile={this.showUserProfile} user={this.state.showingUser} />
+                        <PublicProfile showUserProfile={this.showUserProfile} user={this.state.showingUser} currentUser={this.props.currentUser}
+                        updateNotifications={this.props.updateNotifications} />
                     }
                     {this.props.currentPanel === 'feed' && userType === 1 && !this.state.showingUser &&
                         <Feed showUserProfile={this.showUserProfile} />
@@ -95,8 +103,12 @@ export default class RightCol extends Component {
                             </div>
                         </div>
                     }
-                    {this.props.currentPanel === 'classes' && !this.state.showingUser &&
+                    {this.props.currentPanel === 'classes' && !this.state.showingUser && !hasClasses &&
                         <div>You don't have any classes yet</div>
+                    }
+                    {this.props.currentPanel === 'classes' && !this.state.showingUser && hasClasses &&
+                        <ClassList notificationsArray={this.props.notificationsArray} currentUser={this.props.currentUser} 
+                        handleNotificationChange={this.props.handleNotificationChange} />
                     }
                     {this.props.currentPanel === 'messages' && !this.state.showingUser &&
                         <div>You don't have any messages</div>
