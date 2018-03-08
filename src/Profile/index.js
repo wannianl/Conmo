@@ -55,7 +55,7 @@ export default class Profile extends Component {
                         <RightCol currentUser={this.props.currentUser} currentPanel={this.state.currentPanel} editUser={this.props.editUser}
                         handleInfoChange={this.props.handleInfoChange} handleUserSave={this.props.handleUserSave} handleUserMenu={this.handleUserMenu}
                         notificationsArray={this.props.notificationsArray} handleNotificationChange={this.props.handleNotificationChange}
-                        updateNotifications={this.props.updateNotifications} />
+                        updateNotifications={this.props.updateNotifications} handlePictureInput={this.props.handlePictureInput} />
                     </div>
                 </div>
                 {this.state.showNotificationBox && 

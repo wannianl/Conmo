@@ -229,7 +229,7 @@ class App extends Component {
             <Profile handleLogout={this.handleLogout} currentScreen={this.state.currentScreen} handlePageChange={this.handlePageChange} 
             currentUser={this.state.currentUser} editUser={this.state.editUser} handleSettingsAccess={this.handleSettingsAccess}
             handleInfoChange={this.handleInfoChange} handleUserSave={this.handleUserSave} notificationsArray={this.state.notificationsArray}
-            handleNotificationChange={this.handleNotificationChange} updateNotifications={this.updateNotifications}/>
+            handleNotificationChange={this.handleNotificationChange} updateNotifications={this.updateNotifications} handlePictureInput={this.handlePictureInput}/>
           )} />
         </Switch>
       </div>

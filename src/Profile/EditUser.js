@@ -9,6 +9,10 @@ export default class EditUser extends Component {
         this.props.handleUserMenu('overview');
     }
 
+    handlePictureInput(file) {
+        this.props.handlePictureInput(file);
+    }
+
     render() {
 
         let editUser = this.props.editUser;
@@ -17,6 +21,13 @@ export default class EditUser extends Component {
 
         if (editUser.userType === 1) {
             editFields = [
+                <img src={editUser.avatar ? editUser.avatar : avatarPlaceholder} alt="" className="addBoxImg" key="picture" />,
+                <form method="POST" encType="multipart/form-data" action="/upload" id="uploadForm" key="uploadForm">
+                    <label className="uploadButton" id="submitFileBtn">
+                        <i className="fas fa-camera"></i>
+                        <input ref="file" type="file" name="upload" id="inputFile" accept="image/gif, image/jpeg, image/jpg, , image/png" onChange={() => this.handlePictureInput(document.getElementById("uploadForm")[0].files[0])}/>
+                    </label>
+                </form>,
                 <div className="inputHolder" key="name">
                     <div className="inputLabel">Nome</div>
                     <input type="text" className="textInput" placeholder="" name="name" value={editUser.name || ''} onChange={this.props.handleInfoChange} />
@@ -36,6 +47,13 @@ export default class EditUser extends Component {
             ];
         } else if (editUser.userType === 2) {
             editFields = [
+                <img src={editUser.avatar ? editUser.avatar : avatarPlaceholder} alt="" className="addBoxImg" key="picture" />,
+                <form method="POST" encType="multipart/form-data" action="/upload" id="uploadForm" key="uploadForm">
+                    <label className="uploadButton" id="submitFileBtn">
+                        <i className="fas fa-camera"></i>
+                        <input ref="file" type="file" name="upload" id="inputFile" accept="image/gif, image/jpeg, image/jpg, , image/png" onChange={() => this.handlePictureInput(document.getElementById("uploadForm")[0].files[0])}/>
+                    </label>
+                </form>,
                 <div className="inputHolder" key="name">
                     <div className="inputLabel">Nome</div>
                     <input type="text" className="textInput" placeholder="" name="name" value={editUser.name || ''} onChange={this.props.handleInfoChange} />

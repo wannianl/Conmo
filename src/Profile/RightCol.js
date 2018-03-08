@@ -115,7 +115,8 @@ export default class RightCol extends Component {
                     }
                     {this.props.currentPanel === 'settings' && !this.state.showingUser &&
                         <EditUser editUser={this.props.editUser} handleInfoChange={this.props.handleInfoChange} 
-                        handleUserSave={this.props.handleUserSave} handleUserMenu={this.props.handleUserMenu} />
+                        handleUserSave={this.props.handleUserSave} handleUserMenu={this.props.handleUserMenu} 
+                        handlePictureInput={this.props.handlePictureInput} />
                     }
                 </div>
             </div>

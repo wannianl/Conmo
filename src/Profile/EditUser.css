@@ -23,3 +23,36 @@
   padding: 0;
   padding-left: 5px;
 }
+
+.EditUser .addBoxImg {
+  border-radius: 100%;
+  width: 150px;
+  height: 150px;
+  display: block;
+  margin: 20px 0;
+  object-fit: cover;
+}
+
+/* File Input */
+
+.uploadButton {
+  cursor: pointer;
+  position: absolute;
+  top: 130px;
+  left: 250px;
+}
+
+.uploadButton i {
+  font-size: 26px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

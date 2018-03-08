@@ -24,7 +24,8 @@
 .ClassCard .card-img-top {
     display: block;
     width: 100%;
-    height: auto;
+    height: 160px;
+    object-fit: cover;
 }
 
 .ClassCard .card-title {
@@ -64,5 +65,5 @@
 
 .ClassCard .card-footer button {
     display: inline-block;
-    width: 50%;
+    width: 48%;
 }

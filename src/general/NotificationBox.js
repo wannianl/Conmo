@@ -68,7 +68,11 @@ export default class NotificationBox extends Component {
 
         return (
             <div className="NotificationBox">
-                {list}
+                {list.length > 0 ?
+                list
+                :
+                <div>You don't have any notification</div>
+                }
             </div>
         );
     }

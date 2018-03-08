@@ -15,7 +15,7 @@ export default class Home extends Component {
     }
 
     return (
-        <div className="Home"> 
+        <div className="Home defaultBg"> 
             <div className="centeredBox small">
                 <div className="mb-3">You must Log in or subscribe</div>
                 <button className="btn btn-default" onClick={() => this.props.handlePageChange("login")}>Log In</button>

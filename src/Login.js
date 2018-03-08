@@ -35,9 +35,9 @@ export default class Login extends Component {
     }
 
     return (
-        <div className="Login">
+        <div className="Login defaultBg">
             <Topbar handlePageChange={this.props.handlePageChange} />
-            <div className="loginBox">
+            <div className="loginBox whiteBg">
               <h2 className="form-signin-heading">Log In</h2>
               <input type="text" className="loginInput" name="email" placeholder="E-mail" value={this.state.email || ''} onChange={(e) => this.handleLoginInfoChange(e)} />
               <input type="password" className="loginInput" name="password" placeholder="Password" value={this.state.password || ''} onChange={(e) => this.handleLoginInfoChange(e)}/>      

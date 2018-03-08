@@ -24,13 +24,13 @@ export default class ClassCard extends Component {
                     <div className="card-footer">
                         <button className="btn btn-primary btn-sm float-right">Message</button>
                         {this.props.classStatus === "requested" && userType === 1 &&
-                            <button className="btn btn-success btn-sm float-right" onClick={() => this.props.handleNotificationChange(this.props.notification.id, "accept")}>Accept</button>
+                            <button className="btn btn-success btn-sm float-left" onClick={() => this.props.handleNotificationChange(this.props.notification.id, "accept")}>Accept</button>
                         }
                         {this.props.classStatus === "requested" && userType === 2 &&
-                            <button className="btn btn-default btn-sm float-right unclickable">Waiting</button>
+                            <button className="btn btn-default btn-sm float-left unclickable">Waiting</button>
                         }
                         {this.props.classStatus === "accepted" &&
-                            <button className="btn btn-default btn-sm float-right unclickable">Accepted</button>
+                            <button className="btn btn-default btn-sm float-left unclickable">Accepted</button>
                         }
                     </div>
                 </div>

@@ -32,10 +32,10 @@ export default class Subscribe extends Component {
     var editUser = this.props.editUser;
 
     return (
-      <div className="Subscribe">
+      <div className="Subscribe defaultBg">
         <Topbar handlePageChange={this.props.handlePageChange} />
         {editUser ?
-        <div className="subscribeCont">
+        <div className="subscribeCont whiteBg">
             <input type="button" className={editUser.userType === 1 ? "btnInput btnLeft btnActive" : "btnInput btnLeft" } value="Student" onClick={() => this.props.handleBtnInput('userType',1)} />
             <input type="button" className={editUser.userType === 2 ? "btnInput btnRight btnActive" : "btnInput btnRight" } value="Teacher" onClick={() => this.props.handleBtnInput('userType',2)} />
             <img src={editUser.avatar ? editUser.avatar : avatarPlaceholder} alt="" className="subscribeBoxImg" />
