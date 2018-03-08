@@ -16,10 +16,11 @@ export default class Home extends Component {
 
     return (
         <div className="Home defaultBg"> 
+            <h1>Conmo</h1>
             <div className="centeredBox small">
-                <div className="mb-3">You must Log in or subscribe</div>
-                <button className="btn btn-default" onClick={() => this.props.handlePageChange("login")}>Log In</button>
-                <button className="btn btn-primary ml-2" onClick={() => this.props.handlePageChange("subscribe")}>Subscribe</button>
+                <div>You must Log in or subscribe</div>
+                <button className="btn btn-default actionBtn" onClick={() => this.props.handlePageChange("login")}>Login</button>
+                <button className="btn btn-primary actionBtn ml-2" onClick={() => this.props.handlePageChange("subscribe")}>Subscribe</button>
             </div>
         </div>
     );

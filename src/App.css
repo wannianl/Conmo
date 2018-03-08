@@ -50,9 +50,9 @@
   margin-left: -180px;
   padding: 30px;
   background: #fff;
-  border-radius: 5px;
   border: 1px solid #337AB7;
   font-size: 18px;
+  font-family: 'Nunito', sans-serif !important;
 }
 
 .defaultBg {
