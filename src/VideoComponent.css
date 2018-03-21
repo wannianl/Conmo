@@ -1,0 +1,24 @@
+.VideoComponent .leftCol {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100vh;
+    border-right: 1px solid #999;
+}
+
+.VideoComponent .leftCol .room-info {
+    padding-top: 20px;
+}
+
+.VideoComponent .leftCol .video-contained {
+    width: 100%;
+    max-width: 280px !important;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.VideoComponent .leftCol video {
+    object-fit: contain;
+    max-width: 280px !important;
+}

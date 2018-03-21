@@ -104,6 +104,14 @@ export default class ParseHelper {
         parseNotif.set('student',studentPointer);
         parseNotif.save();
     }
+
+    static fetchNotificationByID(notificationID) {
+        var query = new Parse.Query(Notification);
+        query.equalTo("objectId",notificationID);
+        query.include("teacher");
+        query.include("student");
+        return query.first();
+    }
     
 
 }

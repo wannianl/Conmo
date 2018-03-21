@@ -5,6 +5,9 @@ import Home from './Home';
 import Login from './Login';
 import Subscribe from './Subscribe';
 import Profile from './Profile/index.js';
+import VideoComponent from './VideoComponent';
+//import ChatComponent from './Chat/ChatComponent';
+import ChatApp from './ChatApp/ChatApp';
 import Parse from 'parse';
 import User from './helpers/User';
 import Notification from './helpers/Notification';
@@ -46,6 +49,7 @@ class App extends Component {
 
       return Promise.all([authPromise,notifPromise]).then(values => {
         if (values[0]) {
+          localStorage.setItem('name', User.current().get('name'));
           this.setState({
             currentScreen: 'profile',
             auth: true,
@@ -78,6 +82,7 @@ class App extends Component {
 
       return Promise.all([authPromise,notifPromise]).then(values => {
         if (values[0]) {
+          localStorage.setItem('name', user.get('name'));
           this.setState({
             currentScreen: 'profile',
             auth: true,
@@ -230,6 +235,12 @@ class App extends Component {
             currentUser={this.state.currentUser} editUser={this.state.editUser} handleSettingsAccess={this.handleSettingsAccess}
             handleInfoChange={this.handleInfoChange} handleUserSave={this.handleUserSave} notificationsArray={this.state.notificationsArray}
             handleNotificationChange={this.handleNotificationChange} updateNotifications={this.updateNotifications} handlePictureInput={this.handlePictureInput}/>
+          )} />
+          <Route path="/video/:notificationID" render={(props) => (
+            <VideoComponent notificationID={props.match.params.notificationID} />
+          )} />
+          <Route path="/chat/:notificationID" render={(props) => (
+            <ChatApp notificationID={props.match.params.notificationID} currentUser={this.state.currentUser} />
           )} />
         </Switch>
       </div>
