@@ -90,12 +90,14 @@ app.post('/token-chat/:identity', (request, response) => {
 })
 
 // API Routes
+/*
 app.get('/api/users',function(req,res){
     var query = new Parse.Query(User);
     return query.find().then((users) => {
         res.send(JSON.stringify(users));
     });
 });
+*/
 
 // Default Route
 app.get('/', function(req,res) {
