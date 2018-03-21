@@ -87,6 +87,9 @@ class ChatApp extends Component {
           window.channel = channel;
           return this.channel.join();
         })
+        .catch(err => {
+          console.log(err);
+        })
         .then(() => {
           this.channel.getMessages().then(this.messagesLoaded);
           this.channel.on('messageAdded', this.messageAdded);
