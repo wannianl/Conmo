@@ -19,6 +19,15 @@ app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'build'))); 
 app.use(bodyParser.urlencoded({extended: false}));
 
+// Middleware to force https
+app.use(function(req, res, next) {
+    if (req.headers['x-forwarded-proto'] != 'https') {
+        return res.redirect('https://' + req.headers.host + req.url);
+    } else {
+        return next();
+    }
+});
+
 // Initialize Parse
 Parse.initialize('YAFUtPWHeBWVeEjiwZmq2WQFPIEsXFL0yq4oA0fy','jKwDKSvlbp3LhufFwXTyjiOOQS2W6wjtdGQIPrjo');
 Parse.serverURL = 'https://parseapi.back4app.com/';
