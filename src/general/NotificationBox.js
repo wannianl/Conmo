@@ -5,6 +5,16 @@ import strings from '../localization/strings';
 
 export default class NotificationBox extends Component {
     
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.currentLanguage) {
+            if(nextProps.currentLanguage === 'zh') {
+                strings.setLanguage('zh');
+            } else {
+                strings.setLanguage('en');
+            }
+        }
+    }
+
     handleNotificationClick() {
         this.props.handleUserMenu("classes");
         this.props.showNotificationBox();

@@ -46,7 +46,11 @@ let strings = new LocalizedStrings({
    noNotif: 'You don\'t have any notification',
    home:"Home",
    back: "Back",
-   homeSentence: "Get Started"
+   homeSentence: "Get Started",
+   studyingHours: "Studying Hours",
+   noStudyingHours: "You have not completed any studying hour yet",
+   teachingHours: "Teaching Hours",
+   noTeachingHours: "You have not completed any teaching hour yet"
  },
  zh: {
    students: "学生",
@@ -60,7 +64,7 @@ let strings = new LocalizedStrings({
    hour: '小时',
    hours: '小时',
    feed: '主页',
-   overview: 'Overview',
+   overview: '概观',
    courses: '课程',
    account: '用户信息',
    name: '名字',
@@ -93,7 +97,11 @@ let strings = new LocalizedStrings({
    noNotif: '您目前没有信息',
    home:"主页",
    back: "退回",
-   homeSentence: "开始"
+   homeSentence: "开始",
+   studyingHours: "学习课时",
+   noStudyingHours: "还未完成学习课时",
+   teachingHours: "教书课时",
+   noTeachingHours: "你还没有完成课时"
  }
 });
 /**

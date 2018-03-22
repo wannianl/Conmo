@@ -29,10 +29,6 @@ app.use(function(req, res, next) {
 });
 
 
-// Initialize Parse
-//Parse.initialize('YAFUtPWHeBWVeEjiwZmq2WQFPIEsXFL0yq4oA0fy','jKwDKSvlbp3LhufFwXTyjiOOQS2W6wjtdGQIPrjo');
-//Parse.serverURL = 'https://parseapi.back4app.com/';
-
 // Twilio Routes
 
 /**
@@ -64,24 +60,6 @@ app.get('/token-video', function(request, response) {
         token: token.toJwt()
     });
 });
-/*
-app.get('/token-chat', function(request, response) {
-    const token = new AccessToken(
-        process.env.TWILIO_ACCOUNT_SID,
-        process.env.TWILIO_API_KEY,
-        process.env.TWILIO_API_SECRET,
-    )
-
-    token.identity = chance.name()
-    token.addGrant(new ChatGrant({
-        serviceSid: process.env.TWILIO_CHAT_SERVICE_SID
-    }))
-    
-    response.send({
-        identity: token.identity,
-        token: token.toJwt()
-    })
-});*/
 
 app.post('/token-chat/:identity', (request, response) => {
   const identity = request.params.identity;
@@ -98,16 +76,6 @@ app.post('/token-chat/:identity', (request, response) => {
     identity: identity
   }));
 })
-
-// API Routes
-/*
-app.get('/api/users',function(req,res){
-    var query = new Parse.Query(User);
-    return query.find().then((users) => {
-        res.send(JSON.stringify(users));
-    });
-});
-*/
 
 // Default Route
 app.get('*', function(req,res) {

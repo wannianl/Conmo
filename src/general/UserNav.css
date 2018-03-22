@@ -63,3 +63,29 @@
     margin: 15px 50px 0 0;
     float: right;
 }
+
+.UserNav .languageBtns {
+    height: 60px;
+    width: 120px;
+    display: inline;
+    margin-right: 20px;
+}
+
+.UserNav .languageBtns .language {
+    display: inline-block;
+    width: 50px;
+    height: 60px;
+    line-height: 60px;
+    cursor: pointer;
+}
+
+.UserNav .languageBtns .language.active {
+    font-weight: bold;
+}
+
+.UserNav .languageBtns .other {
+    display: inline-block;
+    width: 20px;
+    height: 60px;
+    line-height: 60px;
+}

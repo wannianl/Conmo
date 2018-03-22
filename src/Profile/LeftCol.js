@@ -5,6 +5,16 @@ import strings from '../localization/strings';
 
 export default class LeftCol extends Component {
     
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.currentLanguage) {
+            if(nextProps.currentLanguage === 'zh') {
+                strings.setLanguage('zh');
+            } else {
+                strings.setLanguage('en');
+            }
+        }
+    }
+
     render() {
 
         const currentUser = this.props.currentUser;

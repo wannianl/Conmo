@@ -3,9 +3,17 @@ import './TeacherCard.css';
 import avatarPlaceholder from '../assets/avatarPlaceholder.png';
 import strings from '../localization/strings';
 
-
-
 export default class TeacherCard extends Component {
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.currentLanguage) {
+            if(nextProps.currentLanguage === 'zh') {
+                strings.setLanguage('zh');
+            } else {
+                strings.setLanguage('en');
+            }
+        }
+    }
 
     render() {
 

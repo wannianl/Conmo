@@ -15,6 +15,11 @@ export default class UserNav extends Component {
                     <img src={picture} alt="" />
                     <div className="name">{name}</div>
                 </div>
+                <div className="languageBtns whiteText">
+                    <div className={this.props.currentLanguage === 'en' ? "language active" : "language"} onClick={() => this.props.handleLanguageSelection('en')}>En</div>
+                    <div className="other">/</div>
+                    <div className={this.props.currentLanguage === 'zh' ? "language active" : "language"} onClick={() => this.props.handleLanguageSelection('zh')}>中文</div>
+                </div>
                 <div className="notificationBtn" onClick={() => this.props.showNotificationBox()}>
                     <i className="fas fa-bell"></i>
                 </div>

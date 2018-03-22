@@ -18,7 +18,6 @@ export default class Profile extends Component {
         this.showNotificationBox = this.showNotificationBox.bind(this);
     }
 
-
     handleUserMenu(target) {
         if (target === 'settings') {
             this.props.handleSettingsAccess();
@@ -48,16 +47,16 @@ export default class Profile extends Component {
         return (
             <div className="Profile">
                 <UserNav handlePageChange={this.props.handlePageChange} currentUser={this.props.currentUser}
-                showNotificationBox={this.showNotificationBox} />
+                showNotificationBox={this.showNotificationBox} currentLanguage={this.props.currentLanguage} handleLanguageSelection={this.props.handleLanguageSelection} />
                 <div className="row contentContainer">
-                    <LeftCol currentUser={this.props.currentUser} currentPanel={this.state.currentPanel} handleUserMenu={this.handleUserMenu} handleLogout={this.props.handleLogout} />
+                    <LeftCol currentUser={this.props.currentUser} currentPanel={this.state.currentPanel} handleUserMenu={this.handleUserMenu} handleLogout={this.props.handleLogout} currentLanguage={this.props.currentLanguage} />
                     <RightCol currentUser={this.props.currentUser} currentPanel={this.state.currentPanel} editUser={this.props.editUser}
                     handleInfoChange={this.props.handleInfoChange} handleUserSave={this.props.handleUserSave} handleUserMenu={this.handleUserMenu}
                     notificationsArray={this.props.notificationsArray} handleNotificationChange={this.props.handleNotificationChange}
-                    updateNotifications={this.props.updateNotifications} handlePictureInput={this.props.handlePictureInput} />
+                    updateNotifications={this.props.updateNotifications} handlePictureInput={this.props.handlePictureInput} currentLanguage={this.props.currentLanguage} />
                 </div>
                 {this.state.showNotificationBox && 
-                    <NotificationBox currentUser={this.props.currentUser} notificationsArray={this.props.notificationsArray} handleUserMenu={this.handleUserMenu} showNotificationBox={this.showNotificationBox} />
+                    <NotificationBox currentUser={this.props.currentUser} notificationsArray={this.props.notificationsArray} handleUserMenu={this.handleUserMenu} showNotificationBox={this.showNotificationBox} currentLanguage={this.props.currentLanguage} />
                 }
             </div>
         );

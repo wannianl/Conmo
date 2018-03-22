@@ -4,6 +4,7 @@ import Feed from './Feed';
 import EditUser from './EditUser';
 import PublicProfile from './PublicProfile';
 import ClassList from './ClassList';
+import strings from '../localization/strings';
 
 export default class RightCol extends Component {
     
@@ -20,6 +21,14 @@ export default class RightCol extends Component {
             this.setState({
                 showingUser: null
             });
+        }
+
+        if(nextProps.currentLanguage) {
+            if(nextProps.currentLanguage === 'zh') {
+                strings.setLanguage('zh');
+            } else {
+                strings.setLanguage('en');
+            }
         }
     }
 
@@ -50,56 +59,56 @@ export default class RightCol extends Component {
                 <div className="profile-content">
                     {this.state.showingUser &&
                         <PublicProfile showUserProfile={this.showUserProfile} user={this.state.showingUser} currentUser={this.props.currentUser}
-                        updateNotifications={this.props.updateNotifications} />
+                        updateNotifications={this.props.updateNotifications} currentLanguage={this.props.currentLanguage} />
                     }
                     {this.props.currentPanel === 'feed' && userType === 1 && !this.state.showingUser &&
-                        <Feed showUserProfile={this.showUserProfile} />
+                        <Feed showUserProfile={this.showUserProfile} currentLanguage={this.props.currentLanguage} />
                     }
                     {this.props.currentPanel === 'overview' && currentUser.get("userType") === 1 && !this.state.showingUser &&
                         <div>
                             <div className="profileItem">
-                                <div className="label">Country:</div>
+                                <div className="label">{strings.country}:</div>
                                 <div className="value">{country}</div>
                             </div>
                             <div className="profileItem">
-                                <div className="label">City:</div>
+                                <div className="label">{strings.city}:</div>
                                 <div className="value">{city}</div>
                             </div>
                             <div className="profileItem">
-                                <div className="label">Studying hours:</div>
-                                <div className="value">You have not completed any studying hour yet</div>
+                                <div className="label">{strings.studyingHours}:</div>
+                                <div className="value">{strings.noStudyingHours}</div>
                             </div>
                         </div>
                     }
                     {this.props.currentPanel === 'overview' && currentUser.get("userType") === 2 && !this.state.showingUser &&
                         <div>
                             <div className="profileItem">
-                                <div className="label">Rate:</div>
+                                <div className="label">{strings.rate}:</div>
                                 <div className="value">{rate}</div>
                             </div>
                             <div className="profileItem">
-                                <div className="label">Personal Statement:</div>
+                                <div className="label">{strings.statement}:</div>
                                 <div className="value">{statement}</div>
                             </div>
                             <div className="profileItem">
-                                <div className="label">Teaching hours:</div>
-                                <div className="value">You have not completed any teaching hour yet</div>
+                                <div className="label">{strings.teachingHours}:</div>
+                                <div className="value">{strings.noTeachingHours}</div>
                             </div>
                         </div>
                     }
                     {this.props.currentPanel === 'feed' && currentUser.get("userType") === 2 && !this.state.showingUser &&
                         <div>
                             <div className="profileItem">
-                                <div className="label">Rate:</div>
+                                <div className="label">{strings.rate}:</div>
                                 <div className="value">{rate}</div>
                             </div>
                             <div className="profileItem">
-                                <div className="label">Personal Statement:</div>
+                                <div className="label">{strings.statement}:</div>
                                 <div className="value">{statement}</div>
                             </div>
                             <div className="profileItem">
-                                <div className="label">Teaching hours:</div>
-                                <div className="value">You have not completed any teaching hour yet</div>
+                                <div className="label">{strings.teachingHours}:</div>
+                                <div className="value">{strings.noTeachingHours}</div>
                             </div>
                         </div>
                     }
@@ -108,7 +117,7 @@ export default class RightCol extends Component {
                     }
                     {this.props.currentPanel === 'classes' && !this.state.showingUser && hasClasses &&
                         <ClassList notificationsArray={this.props.notificationsArray} currentUser={this.props.currentUser} 
-                        handleNotificationChange={this.props.handleNotificationChange} />
+                        handleNotificationChange={this.props.handleNotificationChange} currentLanguage={this.props.currentLanguage} />
                     }
                     {this.props.currentPanel === 'messages' && !this.state.showingUser &&
                         <div>You don't have any messages</div>
@@ -116,7 +125,7 @@ export default class RightCol extends Component {
                     {this.props.currentPanel === 'settings' && !this.state.showingUser &&
                         <EditUser editUser={this.props.editUser} handleInfoChange={this.props.handleInfoChange} 
                         handleUserSave={this.props.handleUserSave} handleUserMenu={this.props.handleUserMenu} 
-                        handlePictureInput={this.props.handlePictureInput} />
+                        handlePictureInput={this.props.handlePictureInput} currentLanguage={this.props.currentLanguage} />
                     }
                 </div>
             </div>

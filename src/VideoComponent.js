@@ -28,6 +28,16 @@ export default class VideoComponent extends Component {
 		this.fetchClassInformation = this.fetchClassInformation.bind(this);
 	}
 
+	componentWillReceiveProps(nextProps) {
+        if(nextProps.currentLanguage) {
+            if(nextProps.currentLanguage === 'zh') {
+                strings.setLanguage('zh');
+            } else {
+                strings.setLanguage('en');
+            }
+        }
+    }
+
 	handleRoomNameChange(e) {
 		let roomName = e.target.value;
 		this.setState({ roomName });

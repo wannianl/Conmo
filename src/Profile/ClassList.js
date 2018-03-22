@@ -5,6 +5,15 @@ import strings from '../localization/strings';
 
 export default class ClassList extends Component {
 
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.currentLanguage) {
+            if(nextProps.currentLanguage === 'zh') {
+                strings.setLanguage('zh');
+            } else {
+                strings.setLanguage('en');
+            }
+        }
+    }
 
     render() {
 
@@ -27,7 +36,7 @@ export default class ClassList extends Component {
             }
             return (
                 <ClassCard notification={notification} user={user} classStatus={classStatus} key={index}
-                handleNotificationChange={this.props.handleNotificationChange} />
+                handleNotificationChange={this.props.handleNotificationChange} currentLanguage={this.props.currentLanguage} />
             );
         });
 

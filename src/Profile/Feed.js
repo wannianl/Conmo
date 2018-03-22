@@ -24,7 +24,7 @@ export default class Feed extends Component {
 
         let teacherList = this.state.teachers.map((teacher,index) => {
             return (
-                <TeacherCard teacher={teacher} showUserProfile={this.props.showUserProfile} key={index} />
+                <TeacherCard teacher={teacher} showUserProfile={this.props.showUserProfile} key={index} currentLanguage={this.props.currentLanguage} />
             );
         });
 

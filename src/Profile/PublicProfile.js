@@ -34,6 +34,16 @@ export default class PublicProfile extends Component {
         });
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.currentLanguage) {
+            if(nextProps.currentLanguage === 'zh') {
+                strings.setLanguage('zh');
+            } else {
+                strings.setLanguage('en');
+            }
+        }
+    }
+
     handleRequest() {
         var notifPromise = ParseHelper.sendRequestNotification(this.props.user,this.props.currentUser);
         var friendshipPromise = ParseHelper.fetchUserNotifications(this.props.currentUser.id,this.props.currentUser.get("userType"));

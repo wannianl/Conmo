@@ -6,6 +6,16 @@ import strings from '../localization/strings';
 
 export default class ClassCard extends Component {
 
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.currentLanguage) {
+            if(nextProps.currentLanguage === 'zh') {
+                strings.setLanguage('zh');
+            } else {
+                strings.setLanguage('en');
+            }
+        }
+    }
+    
     render() {
 
         let user = this.props.user;

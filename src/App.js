@@ -23,7 +23,8 @@ class App extends Component {
       loginError: null,
       editUser: null,
       currentUser: null,
-      notificationsArray: null
+      notificationsArray: null,
+      currentLanguage: 'en'
     }
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
@@ -36,6 +37,7 @@ class App extends Component {
     this.handleSettingsAccess = this.handleSettingsAccess.bind(this);
     this.handleNotificationChange = this.handleNotificationChange.bind(this);
     this.updateNotifications = this.updateNotifications.bind(this);
+    this.handleLanguageSelection = this.handleLanguageSelection.bind(this);
   }
 
   componentWillMount() {
@@ -115,6 +117,12 @@ class App extends Component {
         auth: false,
         loginError: null,
       });
+    });
+  }
+
+  handleLanguageSelection(lang) {
+    this.setState({
+      currentLanguage: lang
     });
   }
 
@@ -234,7 +242,8 @@ class App extends Component {
             <Profile handleLogout={this.handleLogout} currentScreen={this.state.currentScreen} handlePageChange={this.handlePageChange} 
             currentUser={this.state.currentUser} editUser={this.state.editUser} handleSettingsAccess={this.handleSettingsAccess}
             handleInfoChange={this.handleInfoChange} handleUserSave={this.handleUserSave} notificationsArray={this.state.notificationsArray}
-            handleNotificationChange={this.handleNotificationChange} updateNotifications={this.updateNotifications} handlePictureInput={this.handlePictureInput}/>
+            handleNotificationChange={this.handleNotificationChange} updateNotifications={this.updateNotifications} handlePictureInput={this.handlePictureInput}
+            currentLanguage={this.state.currentLanguage} handleLanguageSelection={this.handleLanguageSelection}/>
           )} />
           <Route path="/video/:notificationID" render={(props) => (
             <VideoComponent notificationID={props.match.params.notificationID} />

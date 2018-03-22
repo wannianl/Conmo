@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import strings from '../localization/strings';
 
 class NameBox extends Component {
+  componentWillReceiveProps(nextProps) {
+      if(nextProps.currentLanguage) {
+          if(nextProps.currentLanguage === 'zh') {
+              strings.setLanguage('zh');
+          } else {
+              strings.setLanguage('en');
+          }
+      }
+  }
+  
   render() {
     const name = this.props.name;
     const onNameChanged = this.props.onNameChanged;
