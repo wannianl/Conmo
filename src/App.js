@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
-import Login from './Login';
-import Subscribe from './Subscribe';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
 import Profile from './Profile/index.js';
 import VideoComponent from './VideoComponent';
-import ChatApp from './ChatApp/ChatApp';
+import ChatComponent from './ChatComponent/ChatComponent';
 import Parse from 'parse';
 import User from './helpers/User';
 import Notification from './helpers/Notification';
@@ -59,7 +59,7 @@ class App extends Component {
           });
         } else {
           this.setState({
-            currentScreen: 'login',
+            currentScreen: 'signin',
             auth: false,
             loginError: null
           });
@@ -68,7 +68,7 @@ class App extends Component {
 
     } else {
       this.setState({
-        currentScreen: 'login',
+        currentScreen: 'signin',
         auth: false,
         loginError: null
       });
@@ -92,7 +92,7 @@ class App extends Component {
           });
         } else {
           this.setState({
-            currentScreen: 'login',
+            currentScreen: 'signin',
             auth: false,
             loginError: strings.signInErrorOne
           });
@@ -101,7 +101,7 @@ class App extends Component {
 
     },(err)=> {
       this.setState({
-        currentScreen: 'login',
+        currentScreen: 'signin',
         auth: false,
         loginError: strings.signInErrorTwo
       });
@@ -111,7 +111,7 @@ class App extends Component {
   handleLogout() {
     User.logOut().then(() => {
       this.setState({
-        currentScreen: 'login',
+        currentScreen: 'signin',
         auth: false,
         loginError: null,
       });
@@ -222,11 +222,11 @@ class App extends Component {
           <Route exact path="/" render={() => (
             <Home currentScreen={this.state.currentScreen} handlePageChange={this.handlePageChange} />
             )} />
-          <Route path="/login" render={() => (
-            <Login handleLogin={this.handleLogin} loginError={this.state.loginError} currentScreen={this.state.currentScreen} handlePageChange={this.handlePageChange}/>
+          <Route path="/signin" render={() => (
+            <SignIn handleLogin={this.handleLogin} loginError={this.state.loginError} currentScreen={this.state.currentScreen} handlePageChange={this.handlePageChange}/>
           )} />
-          <Route path="/subscribe" render={() => (
-            <Subscribe editUser={this.state.editUser} handleBtnInput={this.handleBtnInput} handleInfoChange={this.handleInfoChange}
+          <Route path="/signup" render={() => (
+            <SignUp editUser={this.state.editUser} handleBtnInput={this.handleBtnInput} handleInfoChange={this.handleInfoChange}
             handlePictureInput={this.handlePictureInput} handleSubscribeAccess={this.handleSubscribeAccess} handleUserSave={this.handleUserSave}
             currentScreen={this.state.currentScreen} handlePageChange={this.handlePageChange} />
           )} />
@@ -240,7 +240,7 @@ class App extends Component {
             <VideoComponent notificationID={props.match.params.notificationID} />
           )} />
           <Route path="/chat/:notificationID" render={(props) => (
-            <ChatApp notificationID={props.match.params.notificationID} currentUser={this.state.currentUser} />
+            <ChatComponent notificationID={props.match.params.notificationID} currentUser={this.state.currentUser} />
           )} />
         </Switch>
       </div>

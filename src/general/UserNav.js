@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './UserNav.css';
 import avatarPlaceholder from '../assets/avatarPlaceholder.png';
-import strings from '../localization/strings';
 
 export default class UserNav extends Component {
     render() {
@@ -11,7 +10,7 @@ export default class UserNav extends Component {
         let name = currentUser.get("name");
 
         return (
-            <div className="UserNav">
+            <div className="UserNav primaryBg whiteText">
                 <div className="homeBtn" onClick={() => this.props.handlePageChange("profile")}>
                     <img src={picture} alt="" />
                     <div className="name">{name}</div>
@@ -19,7 +18,6 @@ export default class UserNav extends Component {
                 <div className="notificationBtn" onClick={() => this.props.showNotificationBox()}>
                     <i className="fas fa-bell"></i>
                 </div>
-                <div className="btn btn-danger logoutBtn" onClick={() => this.props.handleLogout()}>{strings.logout}</div>
             </div>
         );
     }

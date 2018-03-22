@@ -7,22 +7,21 @@ export default class Home extends Component {
 
   render() {
 
-    if (this.props.currentScreen === 'login') {
-        return <Redirect push to="/login" />;
-    } else if (this.props.currentScreen === 'subscribe') {
-        return <Redirect push to="/subscribe" />;
-    } else if (this.props.currentScreen === 'profile') {
-        return <Redirect push to="/profile" />;
+    if (this.props.currentScreen === 'signin') {
+        return <Redirect push to="/signin" />;
+    } else if (this.props.currentScreen === 'signup') {
+        return <Redirect push to="/signup" />;
+    } else if (this.props.currentScreen === 'signup') {
+        return <Redirect push to="/signup" />;
     } else if (this.props.currentScreen === 'video') {
         return <Redirect push to="/video" />;
     }
 
     return (
         <div className="Home whiteBg"> 
-            <h1 className="primaryBg whiteText">Conmo</h1>
-            <div className="centeredBox small">
-                <button className="btn btn-default actionBtn" onClick={() => this.props.handlePageChange("login")}>{strings.signIn}</button>
-                <button className="btn btn-primary actionBtn ml-2" onClick={() => this.props.handlePageChange("subscribe")}>{strings.signUp}</button>
+            <div className="homeBox">
+                <h1 className="grayText">Conmo</h1> 
+                <button className="btn actionBtn confirmBtn" onClick={() => this.props.handlePageChange("signin")}>{strings.homeSentence}</button>  
             </div>
         </div>
     );

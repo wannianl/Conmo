@@ -71,7 +71,7 @@ export default class PublicProfile extends Component {
         return (
             <div className="PublicProfile">
                 <div className="topBtnHolder">
-                    <button className="btn btn-default btn-sm topBtn" onClick={() => this.props.showUserProfile(null)}>Back</button>
+                    <button className="btn btn-default btn-sm topBtn" onClick={() => this.props.showUserProfile(null)}>{strings.back}</button>
                 </div>
                 <div className="row">
                     <div className="col-xs-12 col-md-12">

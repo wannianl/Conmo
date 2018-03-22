@@ -14,16 +14,16 @@ export default class LeftCol extends Component {
         let userType = currentUser.get("userType") === 1 ? strings.student : strings.teacher;
 
         return (
-            <div className="LeftCol col-md-3">
+            <div className="LeftCol col-md-3 secondaryBg">
                 <div className="profile-sidebar">
                     <div className="profile-userpic">
                         <img src={picture} className="img-responsive" alt=""/>
                     </div>
                     <div className="profile-usertitle">
-                        <div className="profile-usertitle-name">
+                        <div className="profile-usertitle-name whiteText">
                             {name}
                         </div>
-                        <div className="profile-usertitle-job">
+                        <div className="profile-usertitle-job greenText">
                             {userType}
                         </div>
                     </div>
@@ -45,11 +45,15 @@ export default class LeftCol extends Component {
                             </li>
                             <li className={this.props.currentPanel === 'classes' ? 'active' : null} onClick={() => this.props.handleUserMenu('classes')}>
                                 <i className="fas fa-book"></i>
-                                {strings.classes}
+                                {strings.courses}
                             </li>
                             <li className={this.props.currentPanel === 'settings' ? 'active' : null} onClick={() => this.props.handleUserMenu('settings')}>
                                 <i className="fas fa-pencil-alt"></i>
                                 {strings.account}
+                            </li>
+                            <li onClick={() => this.props.handleLogout()}>
+                                <i className="fas fa-sign-out-alt"></i>
+                                {strings.logout}
                             </li>
                         </ul>
                     </div>

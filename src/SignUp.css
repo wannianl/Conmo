@@ -1,0 +1,105 @@
+.SignUp {
+    width: 100%;
+    height: 800px;
+    position: relative;
+}
+
+.subscribeCont {	
+  width: 800px;
+  height: auto;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  margin-top: 20px;
+  margin-left: -400px;
+  padding: 15px 35px 45px;
+  border-radius: 5px;
+  overflow: auto;
+}
+
+.subscribeCont .innerContainer {
+  padding: 0 100px !important;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.SignUp h2 {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+.SignUp .errorMsg {
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 20px;
+  margin: 0 auto;
+}
+
+.SignUp .inputHolder {
+    margin: 10px 0;
+    padding: 0;
+}
+
+.SignUp .btnInput {
+  display: inline-block;
+  width: 50%;
+  height: 50px;
+  margin-top: 20px;
+  background: transparent;
+  border: 1px solid #F4F4F4;
+  color: #000;
+}
+
+.SignUp .btnInput:active, .SignUp .btnInput:focus {
+  outline: none;
+}
+
+
+.SignUp .btnLeft {
+  border-radius: 20px 0 0 20px;
+}
+
+.SignUp .btnRight {
+  border-radius: 0 20px 20px 0;
+}
+
+.SignUp .btnInput.btnActive {
+  background: #047a40;
+  outline: none;
+  color: #fff;
+}
+
+.subscribeBoxImg {
+  border-radius: 100%;
+  width: 150px;
+  height: 150px;
+  display: block;
+  margin: 20px 0;
+  object-fit: cover;
+}
+
+
+/* File Input */
+
+.uploadButton {
+  cursor: pointer;
+  position: absolute;
+  top: 130px;
+  left: 400px;
+}
+
+.uploadButton i {
+  font-size: 26px;
+  color: #576071;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

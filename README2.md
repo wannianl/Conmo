@@ -11,7 +11,14 @@
 ### Step 2 - Run the project
 `cd app`
 `npm install`
-`npm start`
+`npm run dev`
+
+## Deploy
+`npm run build`
+`git remote add heroku https://git.heroku.com/react-conmo.git`
+`git add .`
+`git commit -m "new commit"`
+`git push heroku master`
 
 ## General Info
 
