@@ -3,6 +3,7 @@ import './VideoComponent.css';
 import Video from 'twilio-video';
 import Parse from 'parse';
 import ParseHelper from './helpers/ParseHelper';
+import strings from './localization/strings';
 
 export default class VideoComponent extends Component {
 	constructor(props) {
@@ -174,9 +175,9 @@ export default class VideoComponent extends Component {
 		);
 		// Hide 'Join Room' button if user has already joined a room.
 		let joinOrLeaveRoomButton = this.state.hasJoinedRoom ? (
-			<button className="btn btn-secondary" onClick={this.leaveRoom}>Leave Room</button>
+			<button className="btn btn-secondary" onClick={this.leaveRoom}>{strings.leave}</button>
 		) : (
-			<button className="btn btn-primary" onClick={this.joinRoom}>Join Room</button>
+			<button className="btn btn-primary" onClick={this.joinRoom}>{strings.join}</button>
 		);
 		return (
 			<div className="VideoComponent row">
@@ -186,9 +187,9 @@ export default class VideoComponent extends Component {
 						<div className="room-info">
 							{this.state.teacher && this.state.student &&
 								<div>
-									<div><b>Participants</b></div>
-									<div>Teacher: {this.state.teacher.get("name")}</div>
-									<div>Student: {this.state.student.get("name")}</div>
+									<div><b>{strings.participants}</b></div>
+									<div>{strings.teacher}: {this.state.teacher.get("name")}</div>
+									<div>{strings.student}: {this.state.student.get("name")}</div>
 								</div>
 							}
 							<br/>

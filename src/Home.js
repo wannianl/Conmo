@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Home.css';
 import { Redirect } from 'react-router-dom';
+import strings from './localization/strings';
 
 export default class Home extends Component {
 
@@ -17,12 +18,11 @@ export default class Home extends Component {
     }
 
     return (
-        <div className="Home defaultBg"> 
-            <h1>Conmo</h1>
+        <div className="Home whiteBg"> 
+            <h1 className="primaryBg whiteText">Conmo</h1>
             <div className="centeredBox small">
-                <div>You must Log in or subscribe</div>
-                <button className="btn btn-default actionBtn" onClick={() => this.props.handlePageChange("login")}>Login</button>
-                <button className="btn btn-primary actionBtn ml-2" onClick={() => this.props.handlePageChange("subscribe")}>Subscribe</button>
+                <button className="btn btn-default actionBtn" onClick={() => this.props.handlePageChange("login")}>{strings.signIn}</button>
+                <button className="btn btn-primary actionBtn ml-2" onClick={() => this.props.handlePageChange("subscribe")}>{strings.signUp}</button>
             </div>
         </div>
     );

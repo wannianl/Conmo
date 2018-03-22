@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Login.css';
 import Topbar from './general/Topbar';
 import { Redirect } from 'react-router-dom';
+import strings from './localization/strings';
 
 export default class Login extends Component {
 
@@ -38,13 +39,13 @@ export default class Login extends Component {
         <div className="Login defaultBg">
             <Topbar handlePageChange={this.props.handlePageChange} />
             <div className="loginBox whiteBg">
-              <h2 className="form-signin-heading">Log In</h2>
-              <input type="text" className="loginInput" name="email" placeholder="E-mail" value={this.state.email || ''} onChange={(e) => this.handleLoginInfoChange(e)} />
-              <input type="password" className="loginInput" name="password" placeholder="Password" value={this.state.password || ''} onChange={(e) => this.handleLoginInfoChange(e)}/>      
+              <h2 className="form-signin-heading">{strings.signIn}</h2>
+              <input type="text" className="loginInput" name="email" placeholder={strings.email} value={this.state.email || ''} onChange={(e) => this.handleLoginInfoChange(e)} />
+              <input type="password" className="loginInput" name="password" placeholder={strings.password} value={this.state.password || ''} onChange={(e) => this.handleLoginInfoChange(e)}/>      
               {this.props.loginError && 
                 <div className="errorMsg">{this.props.loginError}</div>
               }
-              <button className="btn btn-lg btn-primary float-left actionBtn" onClick={() => this.login()}>Login</button>  
+              <button className="btn btn-lg btn-primary float-left actionBtn" onClick={() => this.login()}>{strings.signIn}</button>  
             </div>      
         </div>
     );

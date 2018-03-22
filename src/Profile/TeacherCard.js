@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './TeacherCard.css';
 import avatarPlaceholder from '../assets/avatarPlaceholder.png';
+import strings from '../localization/strings';
+
+
 
 export default class TeacherCard extends Component {
 
@@ -19,15 +22,15 @@ export default class TeacherCard extends Component {
                     <div className="card-block">
                         <h4 className="card-title">{name}</h4>
                         <div className="meta">
-                            Teacher
+                            {strings.teacher}
                         </div>
                         <div className="card-text">
                             {statement}
                         </div>
                     </div>
                     <div className="card-footer">
-                        <span className="float-right">${rate}/hour</span>
-                        <span className="float-left">0 hours</span>
+                        <span className="float-right">${rate}/{strings.hour}</span>
+                        <span className="float-left">0 {strings.hours}</span>
                     </div>
                 </div>
             </div>

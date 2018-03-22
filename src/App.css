@@ -59,6 +59,20 @@
   background: #F1F3FA !important;
 }
 
+/* New Styles */
+
 .whiteBg {
   background: #fff !important;
+}
+
+.primaryBg {
+  background: #047a40 !important;
+}
+
+.secondaryBg {
+  background: #576071 !important;
+}
+
+.whiteText {
+  color: #fff !important;
 }

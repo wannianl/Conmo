@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './ClassList.css';
 import ClassCard from './ClassCard';
+import strings from '../localization/strings';
 
 export default class ClassList extends Component {
 
@@ -20,9 +21,9 @@ export default class ClassList extends Component {
             let type = notification.get("type");
             let classStatus;
             if (type === "request") {
-                classStatus = "requested";
+                classStatus = strings.requested;
             } else if (type === "accept") {
-                classStatus = "accepted";
+                classStatus = strings.accepted;
             }
             return (
                 <ClassCard notification={notification} user={user} classStatus={classStatus} key={index}

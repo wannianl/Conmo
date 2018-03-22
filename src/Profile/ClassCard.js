@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './ClassCard.css';
 import avatarPlaceholder from '../assets/avatarPlaceholder.png';
 import { Link } from 'react-router-dom';
+import strings from '../localization/strings';
 
 export default class ClassCard extends Component {
 
@@ -24,15 +25,15 @@ export default class ClassCard extends Component {
                         {this.props.classStatus}
                     </div>
                     <div className="card-footer">
-                        <Link to={'/chat/' + notificationID} target="_blank"><button className="btn btn-primary btn-sm float-right">Message</button></Link>
-                        {this.props.classStatus === "requested" && userType === 1 &&
-                            <button className="btn btn-success btn-sm float-left" onClick={() => this.props.handleNotificationChange(this.props.notification.id, "accept")}>Accept</button>
+                        <Link to={'/chat/' + notificationID} target="_blank"><button className="btn btn-primary btn-sm float-right">{strings.message}</button></Link>
+                        {this.props.classStatus === strings.requested && userType === 1 &&
+                            <button className="btn btn-success btn-sm float-left" onClick={() => this.props.handleNotificationChange(this.props.notification.id, "accept")}>{strings.accept}</button>
                         }
-                        {this.props.classStatus === "requested" && userType === 2 &&
-                            <button className="btn btn-default btn-sm float-left unclickable">Waiting</button>
+                        {this.props.classStatus === strings.requested && userType === 2 &&
+                            <button className="btn btn-default btn-sm float-left unclickable">{strings.waiting}</button>
                         }
-                        {this.props.classStatus === "accepted" &&
-                            <Link to={'/video/' + notificationID} target="_blank"><button className="btn btn-primary btn-sm float-left">Start</button></Link>
+                        {this.props.classStatus === strings.accepted &&
+                            <Link to={'/video/' + notificationID} target="_blank"><button className="btn btn-primary btn-sm float-left">{strings.start}</button></Link>
                         }
                     </div>
                 </div>

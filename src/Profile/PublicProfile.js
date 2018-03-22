@@ -3,6 +3,7 @@ import './PublicProfile.css';
 import avatarPlaceholder from '../assets/avatarPlaceholder.png';
 import coverPlaceholder from '../assets/coverPlaceholder.jpg';
 import ParseHelper from '../helpers/ParseHelper';
+import strings from '../localization/strings';
 
 export default class PublicProfile extends Component {
 
@@ -93,26 +94,26 @@ export default class PublicProfile extends Component {
                                         <div className="statsHolder mt-2 mb-2">
                                             <div className="statsGroup text-center">
                                                 <div className="profile-stats-info">${rate}.00</div>
-                                                <div className="profile-stats-desc">Hourly Rate</div>
+                                                <div className="profile-stats-desc">{strings.hourlyRate}</div>
                                             </div>
                                             <div className="statsGroup ml-5 text-center">
                                                 <div className="profile-stats-info">0</div>
-                                                <div className="profile-stats-desc">Students</div>
+                                                <div className="profile-stats-desc">{strings.students}</div>
                                             </div>
                                             <div className="statsGroup ml-5 text-center">
                                                 <div className="profile-stats-info">0</div>
-                                                <div className="profile-stats-desc">Class Hours</div>
+                                                <div className="profile-stats-desc">{strings.classHours}</div>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="profile-userbuttons float-left">
                                         {!this.state.friendship &&
-                                            <button className="btn btn-success btn-sm" onClick={() => this.handleRequest()}>Request</button>
+                                            <button className="btn btn-success btn-sm" onClick={() => this.handleRequest()}>{strings.request}</button>
                                         }
                                         {this.state.friendship &&
                                             <button className="btn btn-default btn-sm unclickable">{this.state.friendship}ed</button>
                                         }
-                                        <button className="btn btn-primary btn-sm">Message</button>
+                                        <button className="btn btn-primary btn-sm">{strings.message}</button>
                                     </div>
                                 </div>
                             </div>

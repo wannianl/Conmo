@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './UserNav.css';
 import avatarPlaceholder from '../assets/avatarPlaceholder.png';
+import strings from '../localization/strings';
 
 export default class UserNav extends Component {
     render() {
@@ -18,7 +19,7 @@ export default class UserNav extends Component {
                 <div className="notificationBtn" onClick={() => this.props.showNotificationBox()}>
                     <i className="fas fa-bell"></i>
                 </div>
-                <div className="btn btn-danger logoutBtn" onClick={() => this.props.handleLogout()}>Logout</div>
+                <div className="btn btn-danger logoutBtn" onClick={() => this.props.handleLogout()}>{strings.logout}</div>
             </div>
         );
     }

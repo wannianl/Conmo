@@ -6,12 +6,12 @@ import Login from './Login';
 import Subscribe from './Subscribe';
 import Profile from './Profile/index.js';
 import VideoComponent from './VideoComponent';
-//import ChatComponent from './Chat/ChatComponent';
 import ChatApp from './ChatApp/ChatApp';
 import Parse from 'parse';
 import User from './helpers/User';
 import Notification from './helpers/Notification';
 import ParseHelper from './helpers/ParseHelper';
+import strings from './localization/strings';
 
 class App extends Component {
 
@@ -59,7 +59,7 @@ class App extends Component {
           });
         } else {
           this.setState({
-            currentScreen: 'home',
+            currentScreen: 'login',
             auth: false,
             loginError: null
           });
@@ -68,7 +68,7 @@ class App extends Component {
 
     } else {
       this.setState({
-        currentScreen: 'home',
+        currentScreen: 'login',
         auth: false,
         loginError: null
       });
@@ -94,7 +94,7 @@ class App extends Component {
           this.setState({
             currentScreen: 'login',
             auth: false,
-            loginError: 'User is not registered'
+            loginError: strings.signInErrorOne
           });
         }
       });
@@ -103,7 +103,7 @@ class App extends Component {
       this.setState({
         currentScreen: 'login',
         auth: false,
-        loginError: "Incorrect e-mail or password"
+        loginError: strings.signInErrorTwo
       });
     });
   }
@@ -111,7 +111,7 @@ class App extends Component {
   handleLogout() {
     User.logOut().then(() => {
       this.setState({
-        currentScreen: 'home',
+        currentScreen: 'login',
         auth: false,
         loginError: null,
       });

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import strings from '../localization/strings';
 
 class NameBox extends Component {
   render() {
@@ -8,7 +9,7 @@ class NameBox extends Component {
     return (
       <div>
         <form onSubmit={logIn}>
-          <label htmlFor="name">Name: </label>
+          <label htmlFor="name">{strings.name}: </label>
           <input
             type="text"
             name="name"
@@ -16,7 +17,7 @@ class NameBox extends Component {
             onChange={onNameChanged}
             value={name}
           />
-          <button type="submit">Log in</button>
+          <button type="submit">{strings.logIn}</button>
         </form>
       </div>
     );

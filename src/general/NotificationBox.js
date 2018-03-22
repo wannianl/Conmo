@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './NotificationBox.css';
 import avatarPlaceholder from '../assets/avatarPlaceholder.png';
+import strings from '../localization/strings';
 
 export default class NotificationBox extends Component {
     
@@ -29,7 +30,7 @@ export default class NotificationBox extends Component {
                 let type = notification.get("type");
                 let text;
                 if (type === "accept") {
-                    text = name + " accept your request to connect."
+                    text = name + " " + strings.acceptedNotif;
                 }
                 return (
                     <div key={notification.id} className='notificationListCont' onClick={() => this.handleNotificationClick()}>
@@ -51,9 +52,9 @@ export default class NotificationBox extends Component {
                 let type = notification.get("type");
                 let text;
                 if (type === "request") {
-                    text = name + " sent you a class request";
+                    text = name + " " + strings.requestedNotif;
                 } else if (type === "accept") {
-                    text = "You and " + name + " are now connected";
+                    text = strings.connectedNotifPartOne + " " + name + " " + strings.connectedNotifPartTwo;
                 }
                 return (
                     <div key={notification.id} className='notificationListCont' onClick={() => this.handleNotificationClick()}>
@@ -71,7 +72,7 @@ export default class NotificationBox extends Component {
                 {list.length > 0 ?
                 list
                 :
-                <div>You don't have any notification</div>
+                <div>{strings.noNotif}</div>
                 }
             </div>
         );

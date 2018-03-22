@@ -4,8 +4,8 @@ const app = express();
 const port = process.env.PORT || 3001;
 const path = require('path');
 const bodyParser = require('body-parser');
-const Parse = require('parse/node');
-const User = Parse.User.extend("User");
+//const Parse = require('parse/node');
+//const User = Parse.User.extend("User");
 const Twilio = require('twilio');
 const Chance = require('chance');
 const AccessToken = require('twilio').jwt.AccessToken;
@@ -30,8 +30,8 @@ app.use(function(req, res, next) {
 
 
 // Initialize Parse
-Parse.initialize('YAFUtPWHeBWVeEjiwZmq2WQFPIEsXFL0yq4oA0fy','jKwDKSvlbp3LhufFwXTyjiOOQS2W6wjtdGQIPrjo');
-Parse.serverURL = 'https://parseapi.back4app.com/';
+//Parse.initialize('YAFUtPWHeBWVeEjiwZmq2WQFPIEsXFL0yq4oA0fy','jKwDKSvlbp3LhufFwXTyjiOOQS2W6wjtdGQIPrjo');
+//Parse.serverURL = 'https://parseapi.back4app.com/';
 
 // Twilio Routes
 

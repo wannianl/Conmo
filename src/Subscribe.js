@@ -3,6 +3,7 @@ import './Subscribe.css';
 import Topbar from './general/Topbar';
 import avatarPlaceholder from './assets/avatarPlaceholder.png'
 import { Redirect } from 'react-router-dom';
+import strings from './localization/strings';
 
 export default class Subscribe extends Component {
 
@@ -46,44 +47,44 @@ export default class Subscribe extends Component {
                 </label>
             </form> 
             <div className="inputHolder">
-                <div className="inputLabel">Name</div>
+                <div className="inputLabel">{strings.name}</div>
                 <input type="text" className="textInput" name="name" value={editUser.name || ''} onChange={this.props.handleInfoChange} />
             </div>
             <div className="inputHolder">
-                <div className="inputLabel">E-mail</div>
+                <div className="inputLabel">{strings.email}</div>
                 <input type="email" className="textInput" name="email" value={editUser.email || ''} onChange={this.props.handleInfoChange} />
             </div>
             <div className="inputHolder">
-                <div className="inputLabel">Password</div>
+                <div className="inputLabel">{strings.password}</div>
                 <input type="password" className="textInput" name="password" value={editUser.password || ''} onChange={this.props.handleInfoChange} />
             </div>
             {editUser.userType === 1 ?
               <div>
                 <div className="inputHolder">
-                    <div className="inputLabel">Country</div>
+                    <div className="inputLabel">{strings.country}</div>
                     <input type="text" className="textInput" name="country" value={editUser.country || ''} onChange={this.props.handleInfoChange} />
                 </div>
                 <div className="inputHolder">
-                    <div className="inputLabel">City</div>
+                    <div className="inputLabel">{strings.city}</div>
                     <input type="text" className="textInput" name="city" value={editUser.city || ''} onChange={this.props.handleInfoChange} />
                 </div>
               </div>
               :
               <div>
                 <div className="inputHolder">
-                    <div className="inputLabel">Rate</div>
+                    <div className="inputLabel">{strings.rate}</div>
                     <input type="number" className="textInput" name="rate" value={editUser.rate || ''} onChange={this.props.handleInfoChange} />
                 </div>
                 <div className="inputHolder">
-                    <div className="inputLabel">Personal Statement</div>
+                    <div className="inputLabel">{strings.statement}</div>
                     <input type="text" className="textInput" name="statement" value={editUser.statement || ''} onChange={this.props.handleInfoChange} />
                 </div>
               </div>
             }
-            <button className="btn btn-lg btn-primary float-left actionBtn" onClick={() => this.handleSubscription()}>Subscribe</button>  
+            <button className="btn btn-lg btn-primary float-left actionBtn" onClick={() => this.handleSubscription()}>{strings.signUp}</button>  
         </div>
         :
-        <div>Loading...</div>
+        <div>{strings.loading}</div>
         }
       </div>
     );
