@@ -18,7 +18,7 @@ export default class Home extends Component {
     }
 
     return (
-        <div className="Home whiteBg"> 
+        <div className="Home tertiaryBg"> 
             <div className="homeBox">
                 <h1 className="grayText">Conmo</h1> 
                 <button className="btn actionBtn confirmBtn" onClick={() => this.props.handlePageChange("signin")}>{strings.homeSentence}</button>  

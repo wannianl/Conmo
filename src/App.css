@@ -89,8 +89,16 @@
   background: #576071 !important;
 }
 
+.tertiaryBg {
+  background: #eff3f6 !important;
+}
+
 .whiteText {
   color: #fff !important;
+}
+
+.darkGreenText {
+  color: #047a40 !important;
 }
 
 .greenText {
@@ -131,4 +139,18 @@
 
 .unclickable {
   cursor: default !important;
+}
+
+.generalBtn {
+  border-radius: 10px;
+  padding: 0 20px;
+  line-height: 40px;
+  height: 40px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.defaultBtnBg {
+  background: #ccc !important;
+  color: #333 !important;
 }

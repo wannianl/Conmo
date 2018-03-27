@@ -22,23 +22,25 @@ export default class TeacherCard extends Component {
         let name = teacher.get('name');
         let statement = teacher.get('personalStatement');
         let rate = teacher.get('rate');
+        
 
         return (
-            <div className="TeacherCard col-sm-6 col-md-4 col-lg-3 mt-4" onClick={() => this.props.showUserProfile(teacher)}>
-                <div className="card">
-                    <img className="card-img-top" src={picture} alt="" />
-                    <div className="card-block">
-                        <h4 className="card-title">{name}</h4>
-                        <div className="meta">
-                            {strings.teacher}
+            <div className="TeacherCard col-md-12" onClick={() => this.props.showUserProfile(teacher)}>
+                <div className="row">
+                    <div className="col-md-9">
+                        <div className="infoContainer left">
+                            <img src={picture} alt="" />
                         </div>
-                        <div className="card-text">
-                            {statement}
+                        <div className="infoContainer right">
+                            <div className="name">{name}</div>
+                            <div className="statement">{statement}</div>
                         </div>
                     </div>
-                    <div className="card-footer">
-                        <span className="float-right">${rate}/{strings.hour}</span>
-                        <span className="float-left">0 {strings.hours}</span>
+                    <div className="col-md-3">
+                        <div className="infoContainer">
+                            <span className="rate float-right">${rate}/{strings.hour}</span>
+                            <span className="hours float-left">0 {strings.hours}</span>
+                        </div>
                     </div>
                 </div>
             </div>

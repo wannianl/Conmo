@@ -41,7 +41,7 @@ export default class ClassList extends Component {
         });
 
         return (
-            <div className="ClassList">
+            <div className="ClassList tertiaryBg">
                 <div className="row">
                     {classList}
                 </div>

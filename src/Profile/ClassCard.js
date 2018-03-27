@@ -23,28 +23,33 @@ export default class ClassCard extends Component {
         let picture = user.get("avatar") ? user.get("avatar").url() : avatarPlaceholder;
         let userType = user.get("userType");
         let notificationID = this.props.notification.id;
+        let courseName = "After effects crash course";
+        let nextAppt = "Apr 6th, 2:00PM PST";
 
         return (
-            <div className="ClassCard col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div className="card">
-                    <img className="card-img-top" src={picture} alt="" />
-                    <div className="card-block">
-                        <h4 className="card-title">{name}</h4>
+            <div className="ClassCard col-md-12 mt-4">
+                <div className="row">
+                    <div className="col-md-9">
+                        <div className="infoContainer left">
+                            <div className="course">{courseName}</div>
+                            <div className="taught">Taught by</div>
+                            <div className="name darkGreenText">{name}</div>
+                            <div className="nextAppt">Next Appointment: {nextAppt}</div>
+                        </div>
                     </div>
-                    <div className="card-text">
-                        {this.props.classStatus}
-                    </div>
-                    <div className="card-footer">
-                        <Link to={'/chat/' + notificationID} target="_blank"><button className="btn btn-primary btn-sm float-right">{strings.message}</button></Link>
-                        {this.props.classStatus === strings.requested && userType === 1 &&
-                            <button className="btn btn-success btn-sm float-left" onClick={() => this.props.handleNotificationChange(this.props.notification.id, "accept")}>{strings.accept}</button>
-                        }
-                        {this.props.classStatus === strings.requested && userType === 2 &&
-                            <button className="btn btn-default btn-sm float-left unclickable">{strings.waiting}</button>
-                        }
-                        {this.props.classStatus === strings.accepted &&
-                            <Link to={'/video/' + notificationID} target="_blank"><button className="btn btn-primary btn-sm float-left">{strings.start}</button></Link>
-                        }
+                    <div className="col-md-3">
+                        <div className="infoContainer right">
+                            {this.props.classStatus === strings.requested && userType === 1 &&
+                                <button className="btn generalBtn primaryBg" onClick={() => this.props.handleNotificationChange(this.props.notification.id, "accept")}>{strings.accept}</button>
+                            }
+                            {this.props.classStatus === strings.requested && userType === 2 &&
+                                <button className="btn generalBtn defaultBtnBg unclickable">{strings.waiting}</button>
+                            }
+                            {this.props.classStatus === strings.accepted &&
+                                <Link to={'/video/' + notificationID} target="_blank"><button className="btn generalBtn primaryBg">{strings.start}</button></Link>
+                            }
+                            <Link to={'/chat/' + notificationID} target="_blank"><button className="btn generalBtn primaryBg">{strings.message}</button></Link>
+                        </div>
                     </div>
                 </div>
             </div>

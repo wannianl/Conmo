@@ -1,7 +1,45 @@
+
 .ClassCard {
-    cursor: pointer;
+    padding: 25px 10px;
+    height: 200px !important;
+    display: block;
+    background: #fff;
 }
 
+.ClassCard .infoContainer {
+    display: block;
+    height: 150px !important;
+    width: 100%;
+}
+
+.ClassCard .infoContainer.left {
+    text-align: left;
+    margin-left: 50px;
+}
+
+.ClassCard .infoContainer.left .course {
+    color: #333;
+}
+
+.ClassCard .infoContainer.left .taught {
+    color: #ccc;
+}
+
+.ClassCard .infoContainer.left .name {
+
+}
+
+.ClassCard .infoContainer.left .nextAppt {
+    color: #f1b45b;
+}
+
+.ClassCard .infoContainer.right .generalBtn {
+    display: block;
+    margin: 10px auto 0;
+    width: 100px;
+}
+
+/*
 .ClassCard .card {
     font-size: 1em;
     overflow: hidden;
@@ -66,4 +104,4 @@
 .ClassCard .card-footer button {
     display: inline-block;
     width: 48%;
-}
+}*/

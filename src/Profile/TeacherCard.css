@@ -1,8 +1,70 @@
+
 .TeacherCard {
     cursor: pointer;
+    padding: 30px 10px;
+    height: 200px !important;
+    display: block;
+    background: #fff;
+    border-bottom: 1px solid #ccc;
 }
 
-.TeacherCard .card {
+.TeacherCard .infoContainer {
+    display: inline-block;
+    vertical-align: top;
+    height: 140px !important;
+}
+
+.TeacherCard .infoContainer.left {
+    float: left;
+    width: 140px;
+}
+
+.TeacherCard .infoContainer.right {
+    float: left;
+    width: 550px;
+
+}
+
+.TeacherCard .infoContainer img {
+    width: 140px;
+    height: 100%;
+    display: block;
+}
+
+.TeacherCard .infoContainer .name, .TeacherCard .infoContainer .statement {
+    display: block;
+    height: 70px;
+    margin: 0;
+    padding: 0 10px;
+    text-align: left;
+    margin-left: 50px;
+}
+
+.TeacherCard .infoContainer .name {
+    line-height: 70px;
+    font-weight: bold;
+    font-size: 22px;
+    color: #333;
+}
+
+.TeacherCard .infoContainer .statement {
+    line-height: 23px;
+    font-size: 16px;
+    overflow: hidden;
+    color: #999;
+}
+
+.TeacherCard .infoContainer .rate, .TeacherCard .infoContainer .hours {
+    margin: 50px 10px;
+    padding: 0 20px;
+    line-height: 40px;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 10px;
+    background: #ccc;
+}
+
+/*.TeacherCard .card {
     font-size: 1em;
     overflow: hidden;
     padding: 0;
@@ -61,4 +123,4 @@
     color: rgba(0, 0, 0, .4);
     border-top: 1px solid rgba(0, 0, 0, .05) !important;
     background: #fff;
-}
+}*/
