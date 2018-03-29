@@ -24,7 +24,7 @@ export default class LeftCol extends Component {
         let userType = currentUser.get("userType") === 1 ? strings.student : strings.teacher;
 
         return (
-            <div className="LeftCol col-md-3 secondaryBg">
+            <div className="LeftCol col-md-3 col-xl-2 secondaryBg">
                 <div className="profile-sidebar">
                     <div className="profile-userpic">
                         <img src={picture} className="img-responsive" alt=""/>

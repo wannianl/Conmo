@@ -55,7 +55,7 @@ export default class RightCol extends Component {
 
 
         return (
-            <div className="RightCol col-md-9 tertiaryBg">
+            <div className="RightCol col-md-9 col-xl-10 tertiaryBg">
                 <div className="profile-content tertiaryBg">
                     {this.state.showingUser &&
                         <PublicProfile showUserProfile={this.showUserProfile} user={this.state.showingUser} currentUser={this.props.currentUser}
