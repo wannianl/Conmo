@@ -45,14 +45,6 @@ export default class LeftCol extends Component {
                                     {strings.feed}
                                 </li>
                             }
-                            <li className={this.props.currentPanel === 'overview' ? 'active' : this.props.currentPanel === 'feed' && userType === 'Teacher' ? 'active' : null} onClick={() => this.props.handleUserMenu('overview')}>
-                                 <i className="fas fa-user"></i>
-                                {strings.overview}
-                            </li>
-                            <li className={this.props.currentPanel === 'messages' ? 'active' : null} onClick={() => this.props.handleUserMenu('messages')}>
-                                <i className="fas fa-comments"></i>
-                                {strings.messages}
-                            </li>
                             <li className={this.props.currentPanel === 'classes' ? 'active' : null} onClick={() => this.props.handleUserMenu('classes')}>
                                 <i className="fas fa-book"></i>
                                 {strings.courses}
@@ -60,6 +52,10 @@ export default class LeftCol extends Component {
                             <li className={this.props.currentPanel === 'settings' ? 'active' : null} onClick={() => this.props.handleUserMenu('settings')}>
                                 <i className="fas fa-pencil-alt"></i>
                                 {strings.account}
+                            </li>
+                            <li className={this.props.currentPanel === 'messages' ? 'active' : null} onClick={() => this.props.handleUserMenu('messages')}>
+                                <i className="fas fa-comments"></i>
+                                {strings.messages}
                             </li>
                             <li onClick={() => this.props.handleLogout()}>
                                 <i className="fas fa-sign-out-alt"></i>

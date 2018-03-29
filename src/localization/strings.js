@@ -15,7 +15,7 @@ let strings = new LocalizedStrings({
    feed: 'Feed',
    overview: 'Overview',
    courses: 'Courses',
-   account: 'Account Settings',
+   account: 'Account',
    name: 'Name',
    email: 'E-mail',
    password: 'Password',

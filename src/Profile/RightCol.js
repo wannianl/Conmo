@@ -64,38 +64,6 @@ export default class RightCol extends Component {
                     {this.props.currentPanel === 'feed' && userType === 1 && !this.state.showingUser &&
                         <Feed showUserProfile={this.showUserProfile} currentLanguage={this.props.currentLanguage} />
                     }
-                    {this.props.currentPanel === 'overview' && currentUser.get("userType") === 1 && !this.state.showingUser &&
-                        <div>
-                            <div className="profileItem">
-                                <div className="label">{strings.country}:</div>
-                                <div className="value">{country}</div>
-                            </div>
-                            <div className="profileItem">
-                                <div className="label">{strings.city}:</div>
-                                <div className="value">{city}</div>
-                            </div>
-                            <div className="profileItem">
-                                <div className="label">{strings.studyingHours}:</div>
-                                <div className="value">{strings.noStudyingHours}</div>
-                            </div>
-                        </div>
-                    }
-                    {this.props.currentPanel === 'overview' && currentUser.get("userType") === 2 && !this.state.showingUser &&
-                        <div>
-                            <div className="profileItem">
-                                <div className="label">{strings.rate}:</div>
-                                <div className="value">{rate}</div>
-                            </div>
-                            <div className="profileItem">
-                                <div className="label">{strings.statement}:</div>
-                                <div className="value">{statement}</div>
-                            </div>
-                            <div className="profileItem">
-                                <div className="label">{strings.teachingHours}:</div>
-                                <div className="value">{strings.noTeachingHours}</div>
-                            </div>
-                        </div>
-                    }
                     {this.props.currentPanel === 'feed' && currentUser.get("userType") === 2 && !this.state.showingUser &&
                         <div>
                             <div className="profileItem">

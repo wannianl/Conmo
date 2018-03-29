@@ -19,18 +19,32 @@
 
 .ClassCard .infoContainer.left .course {
     color: #333;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.ClassCard .infoContainer.left .separator {
+    height: 1px;
+    width: 80px;
+    border-bottom: 2px solid #49ab5e;
 }
 
 .ClassCard .infoContainer.left .taught {
     color: #ccc;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .ClassCard .infoContainer.left .name {
-
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .ClassCard .infoContainer.left .nextAppt {
     color: #f1b45b;
+    font-size: 24px;
+    margin-top: 20px;
 }
 
 .ClassCard .infoContainer.right .generalBtn {

@@ -32,6 +32,7 @@ export default class ClassCard extends Component {
                     <div className="col-md-9">
                         <div className="infoContainer left">
                             <div className="course">{courseName}</div>
+                            <div className="separator"></div>
                             <div className="taught">Taught by</div>
                             <div className="name darkGreenText">{name}</div>
                             <div className="nextAppt">Next Appointment: {nextAppt}</div>

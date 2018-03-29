@@ -43,6 +43,7 @@ export default class ClassList extends Component {
         return (
             <div className="ClassList tertiaryBg">
                 <div className="row">
+                    <div className="generalSubheading">{strings.courses}</div>
                     {classList}
                 </div>
             </div>
