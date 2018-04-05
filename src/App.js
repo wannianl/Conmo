@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from './Home';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
@@ -10,6 +10,7 @@ import ChatComponent from './ChatComponent/ChatComponent';
 import Parse from 'parse';
 import User from './helpers/User';
 import Notification from './helpers/Notification';
+import Category from './helpers/Category';
 import ParseHelper from './helpers/ParseHelper';
 import strings from './localization/strings';
 
@@ -38,6 +39,7 @@ class App extends Component {
     this.handleNotificationChange = this.handleNotificationChange.bind(this);
     this.updateNotifications = this.updateNotifications.bind(this);
     this.handleLanguageSelection = this.handleLanguageSelection.bind(this);
+    this.handleCategorySelection = this.handleCategorySelection.bind(this);
   }
 
   componentWillMount() {
@@ -157,6 +159,18 @@ class App extends Component {
     reader.readAsDataURL(file);
   }
 
+  handleCategorySelection(evt) {
+    var original = this.state.editUser;
+    var user = JSON.parse(JSON.stringify(original));
+    var category = Category.createWithoutData(evt.target.value);
+    user['category'] = category;
+    this.setState({
+      editUser: user
+    });
+
+
+  }
+
   handleSettingsAccess() {
     var editUser = ParseHelper.userDataFromObject(this.state.currentUser);
     this.setState({
@@ -224,6 +238,7 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <div className="App">
         <Switch>
@@ -236,7 +251,7 @@ class App extends Component {
           <Route path="/signup" render={() => (
             <SignUp editUser={this.state.editUser} handleBtnInput={this.handleBtnInput} handleInfoChange={this.handleInfoChange}
             handlePictureInput={this.handlePictureInput} handleSubscribeAccess={this.handleSubscribeAccess} handleUserSave={this.handleUserSave}
-            currentScreen={this.state.currentScreen} handlePageChange={this.handlePageChange} />
+            currentScreen={this.state.currentScreen} handlePageChange={this.handlePageChange} handleCategorySelection={this.handleCategorySelection} />
           )} />
           <Route path="/profile" render={() => (
             <Profile handleLogout={this.handleLogout} currentScreen={this.state.currentScreen} handlePageChange={this.handlePageChange} 
@@ -262,6 +277,7 @@ class App extends Component {
   
     Parse.Object.registerSubclass('User', User);
     Parse.Object.registerSubclass('Notification', Notification);
+    Parse.Object.registerSubclass('Category', Category);
   }
 
 }

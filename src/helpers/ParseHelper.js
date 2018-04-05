@@ -1,6 +1,7 @@
 import Parse from 'parse';
 import User from './User';
 import Notification from './Notification';
+import Category from './Category';
 
 export default class ParseHelper {
 
@@ -27,9 +28,9 @@ export default class ParseHelper {
             city: null,
             userType: 1,
             rate: null,
-            statement: null
+            statement: null,
+            category: null
         }
-
         return obj;
     }
 
@@ -44,7 +45,8 @@ export default class ParseHelper {
             city: object.get('city'),
             userType: object.get('userType'),
             rate: object.get('rate'),
-            statement: object.get('personalStatement')
+            statement: object.get('personalStatement'),
+            category: object.get("category")
         }
 
         return obj;
@@ -66,18 +68,20 @@ export default class ParseHelper {
         } else if (editUser.userType === 2) {
             parseUser.set('rate',Number(editUser.rate));
             parseUser.set('personalStatement',editUser.statement);
+            parseUser.set('category',editUser.category);
         }
-
     }
 
-    static fetchTeacherList() {
+    static fetchTeacherList(category) {
         var query = new Parse.Query(User);
         query.equalTo('userType',2);
+        query.equalTo('category',category);
         return query.find();
     }
 
-    static fetchClassList() {
-        
+    static fetchCategories() {
+        var query = new Parse.Query(Category);
+        return query.find();
     }
 
     static fetchUserNotifications(userID,userType) {

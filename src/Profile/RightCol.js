@@ -5,15 +5,19 @@ import EditUser from './EditUser';
 import PublicProfile from './PublicProfile';
 import ClassList from './ClassList';
 import strings from '../localization/strings';
+import FeedNew from './FeedNew';
+import Category from '../helpers/Category';
 
 export default class RightCol extends Component {
     
     constructor(props) {
         super(props);
         this.state = {
-            showingUser: null
+            showingUser: null,
+            showingCategory: null
         }
         this.showUserProfile = this.showUserProfile.bind(this);
+        this.showFeed = this.showFeed.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -35,6 +39,17 @@ export default class RightCol extends Component {
     showUserProfile(user) {
         this.setState({
             showingUser: user
+        });
+    }
+
+    showFeed(categoryID) {
+        var category = null;
+        if (categoryID) {
+            category = Category.createWithoutData(categoryID);
+        } 
+        this.setState({
+            showingCategory: category,
+            showingUser: null
         });
     }
 
@@ -61,8 +76,11 @@ export default class RightCol extends Component {
                         <PublicProfile showUserProfile={this.showUserProfile} user={this.state.showingUser} currentUser={this.props.currentUser}
                         updateNotifications={this.props.updateNotifications} currentLanguage={this.props.currentLanguage} />
                     }
-                    {this.props.currentPanel === 'feed' && userType === 1 && !this.state.showingUser &&
-                        <Feed showUserProfile={this.showUserProfile} currentLanguage={this.props.currentLanguage} />
+                    {this.props.currentPanel === 'feed' && userType === 1 && !this.state.showingUser && this.state.showingCategory &&
+                        <Feed showUserProfile={this.showUserProfile} currentLanguage={this.props.currentLanguage} category={this.state.showingCategory} showFeed={this.showFeed} />
+                    }
+                    {this.props.currentPanel === 'feed' && userType === 1 && !this.state.showingUser && !this.state.showingCategory &&
+                       <FeedNew showFeed={this.showFeed} />
                     }
                     {this.props.currentPanel === 'feed' && currentUser.get("userType") === 2 && !this.state.showingUser &&
                         <div>
@@ -86,9 +104,6 @@ export default class RightCol extends Component {
                     {this.props.currentPanel === 'classes' && !this.state.showingUser && hasClasses &&
                         <ClassList notificationsArray={this.props.notificationsArray} currentUser={this.props.currentUser} 
                         handleNotificationChange={this.props.handleNotificationChange} currentLanguage={this.props.currentLanguage} />
-                    }
-                    {this.props.currentPanel === 'messages' && !this.state.showingUser &&
-                        <div>You don't have any messages</div>
                     }
                     {this.props.currentPanel === 'settings' && !this.state.showingUser &&
                         <EditUser editUser={this.props.editUser} handleInfoChange={this.props.handleInfoChange} 

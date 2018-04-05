@@ -187,7 +187,7 @@ export default class VideoComponent extends Component {
 		let joinOrLeaveRoomButton = this.state.hasJoinedRoom ? (
 			<button className="btn btn-secondary" onClick={this.leaveRoom}>{strings.leave}</button>
 		) : (
-			<button className="btn btn-primary" onClick={this.joinRoom}>{strings.join}</button>
+			<button className="btn confirmBtn" onClick={this.joinRoom}>{strings.join}</button>
 		);
 		return (
 			<div className="VideoComponent row">

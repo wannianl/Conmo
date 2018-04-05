@@ -2,12 +2,26 @@ import React, { Component } from 'react';
 import './SignUp.css';
 import avatarPlaceholder from './assets/avatarPlaceholder.png'
 import { Redirect } from 'react-router-dom';
+import ParseHelper from './helpers/ParseHelper';
 import strings from './localization/strings';
 
 export default class SignUp extends Component {
 
+  constructor(props) {
+      super(props);
+      this.state = {
+          categories: []
+      }
+  }
+
   componentDidMount() {
-      this.props.handleSubscribeAccess();
+    this.props.handleSubscribeAccess();
+    ParseHelper.fetchCategories().then((categories) => {
+        this.setState({
+            categories: categories
+        });
+    });
+    
   }
 
   handlePictureInput(file) {
@@ -26,6 +40,12 @@ export default class SignUp extends Component {
     } else if (this.props.currentScreen === 'profile') {
         return <Redirect push to="/profile" />;
     }
+
+    var classCategories = this.state.categories.map((category) => {
+        return (
+            <option value={category.id}>{category.get("Category")}</option>
+        )
+    });
 
     var editUser = this.props.editUser;
 
@@ -75,6 +95,13 @@ export default class SignUp extends Component {
                     <div className="inputHolder">
                         <div className="defaultLabel">{strings.statement}</div>
                         <input type="text" className="defaultInput" name="statement" value={editUser.statement || ''} onChange={this.props.handleInfoChange} />
+                    </div>
+                    <div className="inputHolder">
+                        <div className="defaultLabel">{strings.course}</div>
+                        <select name="category" className="defaultSelect" onChange={this.props.handleCategorySelection}>
+                            <option>--Select--</option>
+                            {classCategories}
+                        </select>
                     </div>
                 </div>
                 }

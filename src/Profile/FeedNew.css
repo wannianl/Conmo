@@ -1,0 +1,110 @@
+.tabsHolder {
+    height: 55px;
+}
+
+.feed-panel {
+    height: 100px;
+    padding: 0;
+    margin: 0 auto;
+    border: none !important;
+}
+
+.no-spacing {
+    margin: 0;
+    padding: 0;
+}
+
+.FeedNew .card {
+    display: block;
+    width: 100%;
+    min-height: 300px;
+    border: none;
+}
+
+.FeedNew .panel-tab {
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    height: 100px;
+    line-height: 100px;
+    color: #576071;
+    background: #f8f9fb; 
+}
+
+.FeedNew .panel-tab.active, .panel-tab:hover {
+    background: #fff;
+    color: #047a40;
+    border-top: 3px solid #047a40;
+}
+
+.CategoryCard {
+    cursor: pointer;
+    padding: 30px 10px;
+    height: 200px !important;
+    display: block;
+    background: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+.CategoryCard .infoContainer {
+    display: inline-block;
+    vertical-align: top;
+    height: 140px !important;
+}
+
+.CategoryCard .infoContainer.left {
+    float: left;
+    width: 140px;
+}
+
+.CategoryCard .infoContainer.right {
+    float: left;
+    width: 550px;
+
+}
+
+.CategoryCard .infoContainer img {
+    width: 140px;
+    height: 100%;
+    display: block;
+}
+
+.CategoryCard .infoContainer .name, .CategoryCard .infoContainer .statement {
+    display: block;
+    height: 70px;
+    margin: 0;
+    padding: 0 10px;
+    text-align: left;
+    margin-left: 50px;
+}
+
+.CategoryCard .infoContainer .name {
+    line-height: 70px;
+    font-weight: bold;
+    font-size: 22px;
+    color: #333;
+}
+
+.CategoryCard .infoContainer .statement {
+    line-height: 23px;
+    font-size: 16px;
+    overflow: hidden;
+    color: #999;
+}
+
+.CategoryCard .infoContainer.count .text {
+    height: 140px;
+    line-height: 140px;
+    color: #555;
+
+}
+
+@media (max-width: 768px) {
+    .tabsHolder {
+        margin: 0;
+        padding: 0;
+    }
+}

@@ -15,6 +15,8 @@ export default class Home extends Component {
         return <Redirect push to="/signup" />;
     } else if (this.props.currentScreen === 'video') {
         return <Redirect push to="/video" />;
+    } else if (this.props.currentScreen === 'profile') {
+        return <Redirect push to="/profile" />;
     }
 
     return (

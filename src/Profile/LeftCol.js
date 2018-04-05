@@ -53,10 +53,6 @@ export default class LeftCol extends Component {
                                 <i className="fas fa-pencil-alt"></i>
                                 {strings.account}
                             </li>
-                            <li className={this.props.currentPanel === 'messages' ? 'active' : null} onClick={() => this.props.handleUserMenu('messages')}>
-                                <i className="fas fa-comments"></i>
-                                {strings.messages}
-                            </li>
                             <li onClick={() => this.props.handleLogout()}>
                                 <i className="fas fa-sign-out-alt"></i>
                                 {strings.logout}

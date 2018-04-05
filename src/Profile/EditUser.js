@@ -87,7 +87,7 @@ export default class EditUser extends Component {
         return (
             <div className="EditUser">
                 {editFields}
-                <button className="btn btn-lg btn-primary float-left actionBtn" onClick={() => this.handleSave()}>{strings.save}</button> 
+                <button className="btn actionBtn confirmBtn" onClick={() => this.handleSave()}>{strings.save}</button> 
             </div>
         );
     }

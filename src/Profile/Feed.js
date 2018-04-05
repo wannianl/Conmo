@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Feed.css';
 import TeacherCard from './TeacherCard';
 import ParseHelper from '../helpers/ParseHelper';
+import strings from '../localization/strings';
 
 export default class Feed extends Component {
 
@@ -13,11 +14,21 @@ export default class Feed extends Component {
     }
 
     componentDidMount() {
-        ParseHelper.fetchTeacherList().then((allTeachers) => {
+        ParseHelper.fetchTeacherList(this.props.category).then((allTeachers) => {
             this.setState({
                 teachers: allTeachers
             });
         });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.currentLanguage) {
+            if(nextProps.currentLanguage === 'zh') {
+                strings.setLanguage('zh');
+            } else {
+                strings.setLanguage('en');
+            }
+        }
     }
 
     render() {
@@ -30,8 +41,15 @@ export default class Feed extends Component {
 
         return (
             <div className="Feed">
+                <div className="topBtnHolder">
+                    <button className="btn btn-default btn-sm topBtn" onClick={() => this.props.showFeed(null)}>{strings.back}</button>
+                </div>
                 <div className="row">
-                    {teacherList}
+                    {teacherList.length > 0 ?
+                    teacherList
+                    :
+                    <div className="emptyFeed">{strings.noActiveTeacher}</div>
+                    }
                 </div>
             </div>
         );

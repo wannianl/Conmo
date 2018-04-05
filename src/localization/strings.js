@@ -15,6 +15,7 @@ let strings = new LocalizedStrings({
    feed: 'Feed',
    overview: 'Overview',
    courses: 'Courses',
+   course: 'Course',
    account: 'Account',
    name: 'Name',
    email: 'E-mail',
@@ -50,7 +51,9 @@ let strings = new LocalizedStrings({
    studyingHours: "Studying Hours",
    noStudyingHours: "You have not completed any studying hour yet",
    teachingHours: "Teaching Hours",
-   noTeachingHours: "You have not completed any teaching hour yet"
+   noTeachingHours: "You have not completed any teaching hour yet",
+   activeTeachers: "Active Teachers",
+   noActiveTeacher: "Sorry, there is no active teacher in this category at the moment"
  },
  zh: {
    students: "学生",
@@ -66,6 +69,7 @@ let strings = new LocalizedStrings({
    feed: '主页',
    overview: '概观',
    courses: '课程',
+   course: '课程',
    account: '用户信息',
    name: '名字',
    email: '邮箱',
@@ -101,7 +105,9 @@ let strings = new LocalizedStrings({
    studyingHours: "学习课时",
    noStudyingHours: "还未完成学习课时",
    teachingHours: "教书课时",
-   noTeachingHours: "你还没有完成课时"
+   noTeachingHours: "你还没有完成课时",
+   activeTeachers: "Active Teachers",
+   noActiveTeacher: "Sorry, there is no active teacher in this category at the moment"
  }
 });
 /**
