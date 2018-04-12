@@ -58,17 +58,18 @@
 .CategoryCard .infoContainer.left {
     float: left;
     width: 140px;
+    max-width: 30%;
 }
 
 .CategoryCard .infoContainer.right {
     float: left;
     width: 550px;
-
+    max-width: 70%;
 }
 
 .CategoryCard .infoContainer img {
-    width: 140px;
-    height: 100%;
+    width: 100%;
+    height: auto;
     display: block;
 }
 
@@ -101,6 +102,17 @@
     color: #555;
 
 }
+
+@media (max-width: 992px) {
+    .infoContainer.right .name, .infoContainer.right .statement, .infoContainer.count .text {
+        line-height: 1.5 !important;
+    }
+
+    .infoContainer.count .text {
+        padding-top: 40px;
+    }
+}
+
 
 @media (max-width: 768px) {
     .tabsHolder {
